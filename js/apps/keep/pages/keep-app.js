@@ -6,7 +6,7 @@ import keepToolbox from "../cmps/keep-toolbox.js"
 export default {
     template: `<div>
    <keep-toolbox @add='addNote'/>    
-   <note-list :notes="this.notes"/>
+   <note-list :notes="this.notes" @delete='deleteNote'/>
    </div>           
 `,
 
@@ -26,8 +26,18 @@ export default {
     },
     methods: {
         addNote(type) {
-            console.log(type)
+            noteService.addEmptyNote(type)
+            noteService.query()
+                .then(notes => this.notes = notes)
+        },
+
+
+        deleteNote(id) {
+            noteService.deleteNote(id)
+            noteService.query()
+                .then(notes => this.notes = notes)
         }
+
     },
     components: {
         noteList,
