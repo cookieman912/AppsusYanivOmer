@@ -17,7 +17,8 @@ export default {
                     return this.note.info.title
 
                 case 'NoteTodos':
-                    return this.note.info.label
+                    console.log(this.note)
+                    return this.note.info.title
 
             }
         }

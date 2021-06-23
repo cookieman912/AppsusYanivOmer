@@ -69,8 +69,9 @@ function addEmptyNote(type) {
                 type: "NoteTxt",
                 isPinned: false,
                 info: {
-                    title: '',
-                    txt: "default"
+                    title: 'note',
+                    txt: "default",
+                    id: utilService.makeId()
                 }
             }, );
             break;
@@ -93,10 +94,10 @@ function addEmptyNote(type) {
                 type: "NoteTodos",
                 isPinned: false,
                 info: {
-                    label: "How was it:",
+                    title: "How was it:",
                     todos: [
-                        { txt: "Do that", doneAt: null },
-                        { txt: "Do this", doneAt: 187111111 }
+                        { txt: "Do that", isDone: false, id: utilService.makeId(), },
+                        { txt: "Do this", isDone: false, id: utilService.makeId(), }
                     ]
                 }
             })
@@ -133,7 +134,7 @@ function _createNotes() {
                 type: "NoteTxt",
                 isPinned: true,
                 info: {
-                    title: '',
+                    title: 'note',
                     txt: "Fullstack Me Baby!"
                 }
             },
@@ -155,10 +156,10 @@ function _createNotes() {
                 type: "NoteTodos",
                 isPinned: false,
                 info: {
-                    label: "How was it:",
+                    title: "How was it:",
                     todos: [
-                        { txt: "Do that", doneAt: null },
-                        { txt: "Do this", doneAt: 187111111 }
+                        { txt: "Do that", isDone: false, id: utilService.makeId() },
+                        { txt: "Do this", isDone: false, id: utilService.makeId() }
                     ]
                 }
             }
@@ -169,11 +170,4 @@ function _createNotes() {
     utilService.saveToStorage(NOTES_KEY, notes)
     return notes;
 
-}
-
-
-function getEmptyBook() {
-    return {
-
-    };
 }
