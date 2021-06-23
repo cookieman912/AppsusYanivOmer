@@ -11,6 +11,7 @@ export const noteService = {
     getPrevId,
     addEmptyNote,
     deleteNote,
+    editNote,
 }
 
 function query() {
@@ -18,6 +19,15 @@ function query() {
 }
 
 
+
+
+function editNote(noteToChange) {
+    const idxToChange = gNotes.findIndex(note => note.id === noteToChange.id)
+    console.log(noteToChange)
+    gNotes[idxToChange] = noteToChange;
+    utilService.saveToStorage(NOTES_KEY, gNotes)
+
+}
 
 function deleteNote(noteId) {
     const idx = gNotes.findIndex(note => note.id === noteId);
@@ -59,6 +69,7 @@ function addEmptyNote(type) {
                 type: "NoteTxt",
                 isPinned: false,
                 info: {
+                    title: '',
                     txt: "default"
                 }
             }, );
@@ -70,7 +81,7 @@ function addEmptyNote(type) {
                 type: "NoteImg",
                 isPinned: false,
                 info: {
-                    url: "img/default",
+                    url: "/js/apps/keep/img/default.png.png",
                     title: "Me playing Mi"
                 }
             })
@@ -122,6 +133,7 @@ function _createNotes() {
                 type: "NoteTxt",
                 isPinned: true,
                 info: {
+                    title: '',
                     txt: "Fullstack Me Baby!"
                 }
             },
@@ -130,7 +142,7 @@ function _createNotes() {
                 type: "NoteImg",
                 isPinned: false,
                 info: {
-                    url: "http://some-img/me",
+                    url: "/js/apps/keep/img/default.png.png",
                     title: "Me playing Mi"
                 },
                 style: {
