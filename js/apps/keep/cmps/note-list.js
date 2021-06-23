@@ -5,7 +5,7 @@ export default {
     template: `<div class="note-list"> <h1> welcome to note-list!</h1> 
 
 <ul>
-<li v-for="note in notes">
+<li class="note-preview" v-for="note in notes">
     <note-preview :note="note"/>
 
     <button @click= "$emit('delete', note.id)"> X </button>

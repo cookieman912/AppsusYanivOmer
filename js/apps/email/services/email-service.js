@@ -4,10 +4,9 @@ const gEmails = [
     {
         subject: 'heyo?',
         body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis esse eum sed! Deleniti sint, inventore eligendi, officiis error incidunt omnis ducimus ratione sequi, assumenda fuga maiores. Reiciendis iure error fugit voluptates libero ut labore commodi veniam. Voluptatibus a temporibus quam sed numquam pariatur dolores odio tempora quod deleniti, velit doloribus.',
-        isRead: false,
+        isRead: true,
         sentAt: new Date,
         from: 'omerandyaniv@coding.academy',
-        userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
         id: utilService.makeId(15)
     },
@@ -17,7 +16,6 @@ const gEmails = [
         isRead: false,
         sentAt: new Date,
         from: 'omerandyaniv@coding.academy',
-        userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
         id: utilService.makeId(15)
     },
@@ -27,7 +25,6 @@ const gEmails = [
         isRead: false,
         sentAt: new Date,
         from: 'omerandyaniv@coding.academy',
-        userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
         id: utilService.makeId(15)
     },
@@ -37,7 +34,6 @@ const gEmails = [
         isRead: false,
         sentAt: new Date,
         from: 'omerandyaniv@coding.academy',
-        userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
         id: utilService.makeId(15)
     },
@@ -47,7 +43,6 @@ const gEmails = [
         isRead: false,
         sentAt: new Date,
         from: 'omerandyaniv@coding.academy',
-        userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
         id: utilService.makeId(15)
     },
@@ -57,7 +52,6 @@ const gEmails = [
         isRead: false,
         sentAt: new Date,
         from: 'omerandyaniv@coding.academy',
-        userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
         id: utilService.makeId(15)
     },
@@ -67,7 +61,6 @@ const gEmails = [
         isRead: false,
         sentAt: new Date,
         from: 'omerandyaniv@coding.academy',
-        userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
         id: utilService.makeId(15)
     },
@@ -77,7 +70,6 @@ const gEmails = [
         isRead: false,
         sentAt: new Date,
         from: 'omerandyaniv@coding.academy',
-        userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
         id: utilService.makeId(15)
     },
@@ -87,7 +79,6 @@ const gEmails = [
         isRead: false,
         sentAt: new Date,
         from: 'omerandyaniv@coding.academy',
-        userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
         id: utilService.makeId(15)
     },
@@ -97,7 +88,6 @@ const gEmails = [
         isRead: false,
         sentAt: new Date,
         from: 'omerandyaniv@coding.academy',
-        userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
         id: utilService.makeId(15)
     },
@@ -107,7 +97,6 @@ const gEmails = [
         isRead: false,
         sentAt: new Date,
         from: 'omerandyaniv@coding.academy',
-        userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
         id: utilService.makeId(15)
     },
@@ -116,9 +105,6 @@ const EMAIL_KEY = 'emails';
 
 export const emailService = {
     query,
-    getById,
-    removeEmail,
-    markAsRead
 };
 
 function query() {
@@ -129,16 +115,4 @@ function query() {
         }
         return emails;
     });
-}
-
-function getById(id) {
-    return storageService.get(EMAIL_KEY, id)
-}
-
-function removeEmail(id) {
-    storageService.remove(EMAIL_KEY, id);
-}
-
-function markAsRead(id) {
-    storageService.markMailAsRead(EMAIL_KEY, id)
 }

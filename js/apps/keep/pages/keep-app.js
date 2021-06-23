@@ -1,3 +1,8 @@
+import { noteService } from "../services/note-service.js"
+import keepToolbox from "../cmps/keep-toolbox.js"
+import noteList from "../cmps/note-list.js"
+
+
 export default {
     template: `<div>
    <keep-toolbox @add='addNote'/>    

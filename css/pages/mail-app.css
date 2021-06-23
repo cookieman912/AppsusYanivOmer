@@ -11,17 +11,15 @@
     flex-direction: column;
 }
 
-.nav-bar a {
+.nav-bar button {
     border: none;
     background-color: transparent;
     cursor: pointer;
     width: 100px;
     border-bottom: 1px solid palegreen;
     padding-top: 1rem;
-    text-decoration: none;
-    text-align: center;
 }
 
-.nav-bar a:hover {
+.nav-bar button:hover {
     background-color: rgb(79, 172, 230);
 }
