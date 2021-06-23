@@ -75,7 +75,23 @@ export default {
 
 </div>
 
-<div v-else-if="isVideo" class='note note-Video'> {{this.note}} is Video 
+<div v-else-if="isVideo" class='note note-Video'> 
+
+
+<iframe   width="420" height="315" v-bind:src="videoUrl">
+</iframe>
+
+<form @submit.prevent="editNote">   
+     <input class="title" v-model="note.info.title" type="Text" id="title"> 
+
+ 
+
+   <input  v-model="note.info.url" type="Text" id="url">
+   
+   <label for="url">put a url you want to save</label> 
+
+    <button>save</button>
+    </form > 
 
 
 </div>
@@ -117,7 +133,19 @@ export default {
 
         isNull() {
             if (this.note === null) return true;;
+        },
+        videoUrl() {
+            if (this.note.info.url !== null) {
+
+                const videoUrl = this.note.info.url.replace('watch?v=', 'embed/')
+                return videoUrl;
+
+
+                // "https://www.youtube.com/watch?v=pRziGchtkFE"
+                // return `https://www.youtube.com/embed/${this.note.info.url}`
+            }
         }
+
 
     },
 
