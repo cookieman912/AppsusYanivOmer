@@ -1,6 +1,7 @@
 import homePage from "../pages/homepage.js";
 import emailApp from "../apps/email/pages/mail-app.js"
 import keepApp from "../apps/keep/pages/keep-app.js";
+import noteDetails from "../apps/keep/pages/note-details.js";
 
 
 
@@ -20,6 +21,10 @@ const routes = [{
     {
         path: '/keep',
         component: keepApp
+    },
+    {
+        path: '/keep/details/:noteId?',
+        component: noteDetails
     }
 
 ];
