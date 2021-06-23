@@ -1,0 +1,32 @@
+.email-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.email-list li {
+    padding-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+.email-list li span {
+    font-weight: bold;
+}
+.subject {
+    font-weight: bold;
+}
+.email-preview img {
+    width: 20px;
+    height: 15px;
+    background-color: transparent;
+    background: none;
+}
+
+.preview-text {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+}

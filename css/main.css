@@ -1,3 +1,4 @@
 @import './pages/mail-app.css';
 @import './apps/keep/cmps/note-preview.css';
-@import './apps/keep/pages/note-details.css'
+@import './apps/keep/pages/note-details.css';
+@import './apps/email/cmps/mail-app.css'

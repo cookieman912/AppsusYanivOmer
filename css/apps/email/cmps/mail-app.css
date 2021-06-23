@@ -1,0 +1,25 @@
+@import '../cmps/email-list.css';
+.email-home {
+    display: flex;
+    background-color: lightskyblue;
+}
+.nav-bar {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-bar a {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    width: 100px;
+    border-bottom: 1px solid palegreen;
+    padding-top: 1rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+.nav-bar a:hover {
+    background-color: rgb(79, 172, 230);
+} 
