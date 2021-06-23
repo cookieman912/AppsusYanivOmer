@@ -1,10 +1,13 @@
+
+
 export const storageService = {
     query,
     get,
     post,
     put,
     remove,
-    postMany
+    postMany,
+    markMailAsRead
 }
 
 function query(entityType) {
@@ -67,3 +70,12 @@ function _makeId(length = 5) {
     }
     return text;
 }
+
+function markMailAsRead(entityType, entityId) {
+    return query(entityType)
+    .then (entities => {
+        const entity = entities.find(entity => entity.id === entityId);
+        entity.isRead = true;
+        _save(entityType, entities)
+    })
+} 
