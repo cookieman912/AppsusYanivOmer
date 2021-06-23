@@ -8,6 +8,7 @@ export default {
 <li v-for="note in notes">
     <note-preview :note="note"/>
 
+    <button @click= "$emit('delete', note.id)"> X </button>
    
 </li>
 </ul>

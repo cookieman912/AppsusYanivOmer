@@ -9,34 +9,20 @@ export const noteService = {
     getById,
     getNextId,
     getPrevId,
+    addEmptyNote,
+    deleteNote,
 }
 
 function query() {
     return storageService.query(NOTES_KEY);
 }
 
-function reviewQuery() {
-    return storageService.query(REVIEW_KEY);
-}
 
-function addReview(review) {
-    gReviews.push(review)
-    utilService.saveToStorage(REVIEW_KEY, gReviews);
-}
 
-function _createReviews() {
-    let reviews = utilService.loadFromStorage(REVIEW_KEY)
-    if (!reviews || !reviews.length) {
-        reviews = [];
-    }
-    return reviews
-
-}
-
-function remove(bookId) {
-    const idx = gBooks.findIndex(book => book.id === bookId);
-    gBooks.splice(idx, 1);
-    utilService.saveToStorage(BOOKS_KEY, gBooks);
+function deleteNote(noteId) {
+    const idx = gNotes.findIndex(note => note.id === noteId);
+    gNotes.splice(idx, 1);
+    utilService.saveToStorage(NOTES_KEY, gNotes);
 }
 
 function save(book) {
@@ -57,45 +43,73 @@ function getNextId(currNote) {
 }
 
 function getPrevId(currNote) {
-    console.log(currNote.id)
     let nextIdx = gNotes.findIndex(note => note.id === currNote.id) - 1
     if (nextIdx < 0)
         nextIdx = gNotes.length - 1;
-    console.log(gNotes[nextIdx].id)
     return gNotes[nextIdx].id;
 
 }
 
-function addBook(book) {
+function addEmptyNote(type) {
 
-    console.log('in function');
-    const newBook = {
-        id: book.id,
-        title: book.volumeInfo.title,
-        subtitle: book.volumeInfo.subtitle,
-        authors: book.volumeInfo.author,
-        publishedDate: book.volumeInfo.publishedDate,
-        description: book.volumeInfo.description,
-        pageCount: book.volumeInfo.pageCount,
-        categories: book.volumeInfo.categories,
-        thumbnail: book.volumeInfo.imageLinks.thumbnail,
-        language: book.volumeInfo.language,
-        listPrice: {
-            amount: 109,
-            currencyCode: "EUR",
-            isOnSale: false
-        }
+    switch (type) {
+        case 'text':
+            gNotes.push({
+                id: utilService.makeId(),
+                type: "NoteTxt",
+                isPinned: false,
+                info: {
+                    txt: "default"
+                }
+            }, );
+            break;
+
+        case 'image':
+            gNotes.push({
+                id: utilService.makeId(),
+                type: "NoteImg",
+                isPinned: false,
+                info: {
+                    url: "img/default",
+                    title: "Me playing Mi"
+                }
+            })
+            break;
+
+        case 'todos':
+            gNotes.push({
+                id: utilService.makeId(),
+                type: "NoteTodos",
+                isPinned: false,
+                info: {
+                    label: "How was it:",
+                    todos: [
+                        { txt: "Do that", doneAt: null },
+                        { txt: "Do this", doneAt: 187111111 }
+                    ]
+                }
+            })
+            break;
+
+        case 'video':
+            gNotes.push({
+                id: utilService.makeId(),
+                type: "NoteVideo",
+                isPinned: false,
+                info: {
+                    url: "defaultvideourl",
+                    title: "Me playing Mi"
+                },
+                style: {
+                    backgroundColor: "#00d"
+                }
+            }, )
+
+            break;
     }
 
-    console.log(book)
-    gBooks.push(newBook)
-    console.log(newBook);
-
-
-    utilService.saveToStorage(BOOKS_KEY, gBooks)
-
+    utilService.saveToStorage(NOTES_KEY, gNotes)
 }
-
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY);
