@@ -25,3 +25,12 @@
     background-color: transparent;
     background: none;
 }
+
+.preview-text {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+}
