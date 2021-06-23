@@ -1,10 +1,5 @@
 export default {
     template: `<div>
-<<<<<<< HEAD
-<h1> im a keep </h1>  
-   </div>           
-`,
-=======
    <keep-toolbox @add='addNote'/>    
    <note-list :notes="this.notes" @delete='deleteNote'/>
    </div>           
@@ -43,5 +38,4 @@ export default {
         noteList,
         keepToolbox,
     }
->>>>>>> 84dfb8d827f4eb2a2f932a1df1420fb77dfdd663
 }
