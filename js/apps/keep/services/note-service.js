@@ -72,7 +72,8 @@ function addEmptyNote(type) {
                     title: 'note',
                     txt: "default",
                     id: utilService.makeId()
-                }
+                },
+                style: { bgc: '#000000' },
             }, );
             break;
 
@@ -84,7 +85,8 @@ function addEmptyNote(type) {
                 info: {
                     url: "/js/apps/keep/img/default.png.png",
                     title: "Me playing Mi"
-                }
+                },
+                style: { bgc: '#000000' },
             })
             break;
 
@@ -99,7 +101,9 @@ function addEmptyNote(type) {
                         { txt: "Do that", isDone: false, id: utilService.makeId(), },
                         { txt: "Do this", isDone: false, id: utilService.makeId(), }
                     ]
-                }
+
+                },
+                style: { bgc: '#000000' },
             })
             break;
 
@@ -113,7 +117,7 @@ function addEmptyNote(type) {
                     title: "Me playing Mi"
                 },
                 style: {
-                    backgroundColor: "#00d"
+                    bgc: '#000000'
                 }
             }, )
 
@@ -136,7 +140,8 @@ function _createNotes() {
                 info: {
                     title: 'note',
                     txt: "Fullstack Me Baby!"
-                }
+                },
+                style: { bgc: '#000000' },
             },
             {
                 id: utilService.makeId(),
@@ -148,7 +153,8 @@ function _createNotes() {
                 },
                 style: {
                     backgroundColor: "#00d"
-                }
+                },
+                style: { bgc: '#000000' },
             },
 
             {
@@ -161,7 +167,8 @@ function _createNotes() {
                         { txt: "Do that", isDone: false, id: utilService.makeId() },
                         { txt: "Do this", isDone: false, id: utilService.makeId() }
                     ]
-                }
+                },
+                style: { bgc: '#000000' },
             }
         ]
     }

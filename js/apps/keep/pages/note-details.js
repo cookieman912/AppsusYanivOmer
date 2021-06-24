@@ -6,6 +6,7 @@ export default {
     template: ` 
 
     
+    
 <div  class="note-details">  
 
 <div v-if="isNull" class='note-text'> loading </div>
@@ -19,6 +20,10 @@ export default {
   </p> write stuff here! </p>
 
   <textarea class="text-input" v-model="note.info.txt"> {{note.info.txt}}</textarea>
+
+ <label for="bgc">pick a color!</label>
+
+  <input class="background-color" v-model="note.style.bgc" type="color" id="bgc">
 
   <button>save</button> 
  </form > 
@@ -55,10 +60,12 @@ export default {
   <input class="title" v-model="note.info.title" type="Text" id="title">
 
   '</p> write todos here! </p>'
-<button @click="addTodo"> add </button>
+
+    <button @click="addTodo"> add </button>
   <ul>
     
     <li v-for="todo in note.info.todos ">
+
     <input  v-model="todo.txt" type="Text" id="todo">
 
     <button v-if="todo.isDone"  @click="toggleDone(todo.id)">X</button>
@@ -68,9 +75,12 @@ export default {
     <button @click="deleteTodo(todo.id)">delete</button> 
 
     </li>
+
     </ul>
+
   <button>save</button> 
- </form >
+
+  </form >
 
 
 </div>
@@ -115,7 +125,6 @@ export default {
 
     computed: {
         isText() {
-            console.log(this.note.type)
             return (this.note.type === 'NoteTxt')
         },
 
@@ -134,6 +143,7 @@ export default {
         isNull() {
             if (this.note === null) return true;;
         },
+
         videoUrl() {
             if (this.note.info.url !== null) {
 
