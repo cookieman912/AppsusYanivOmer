@@ -11,13 +11,12 @@ export default {
             <email-filter @filtered="setFilter" />
             <div class="email-home">
                 <aside class="nav-bar">
-                    <router-link :to="'/mail'">Compose</router-link>
+                    <router-link :to="'/mail/compose'">Compose</router-link>
                     <router-link :to="'/mail'">Inbox<email-status :emails="emails" /></router-link>
                     <router-link :to="'/mail'">Starred</router-link>
                     <router-link :to="'/mail'">Sent</router-link>
                 </aside>
                 <email-list :emails="mailsToShow" />
-                <router-view></router-view>
             </div>
         </div>           
     `,
@@ -31,9 +30,9 @@ export default {
         emailService.query()
             .then((emails) => {
                 this.emails = emails;
-            });
-        eventBus.$on('deleteMail', this.deleteMail),
-            eventBus.$on('markAsRead', this.markEmail)
+            })
+        eventBus.$on('deleteMail', this.deleteMail)
+        eventBus.$on('markAsRead', this.markEmail)
     },
     methods: {
         setFilter(filterBy) {
@@ -47,7 +46,7 @@ export default {
         },
         markEmail(email) {
             emailService.toggleRead(email.id)
-                .then((emails) => {
+            .then((emails) => {
                     this.emails = emails
                 })
         }

@@ -21,10 +21,10 @@ function get(entityType, entityId) {
 }
 
 function post(entityType, newEntity) {
-    newEntity.id = _makeId()
+    newEntity.id = _makeId(15)
     return query(entityType)
         .then(entities => {
-            entities.push(newEntity);
+            entities.unshift(newEntity);
             _save(entityType, entities)
             return newEntity;
         })
@@ -50,12 +50,15 @@ function put(entityType, updatedEntity) {
 }
 
 function remove(entityType, entityId) {
-    console.log(entityId);
     return query(entityType)
         .then(entities => {
+            console.log('entityId',entityId);
+            console.log('entities', entities);
             const idx = entities.findIndex(entity => entity.id === entityId);
+            console.log('idx', idx);
             entities.splice(idx, 1)
             _save(entityType, entities)
+            return entities  
         })
 }
 
@@ -78,5 +81,6 @@ function toggleMailRead(entityType, entityId) {
             const entity = entities.find(entity => entity.id === entityId);
             entity.isRead = !entity.isRead;
             _save(entityType, entities)
+            return entities
         })
 }
