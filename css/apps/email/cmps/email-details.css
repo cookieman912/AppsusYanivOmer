@@ -2,7 +2,14 @@
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    padding: 0 5rem;
+    text-align: left;
+    padding: 5px;
+    border: 1px solid black;
+    max-width: 80%;
+    background-color: #90ADC6;
+    margin: auto;
+    margin-top: 1rem;
+    border-radius: 5px;
 }
 
 .head-container {
@@ -12,7 +19,17 @@
 }
 
 .head-container img {
-    max-height: 15px;
+    max-height: 20px;
     background-color: none;
     cursor: pointer;
+}
+
+.head-container button {
+    border-radius: 20px;
+    background-color: transparent;
+}
+
+.user-name {
+    display: flex;
+    justify-content: space-between;
 }

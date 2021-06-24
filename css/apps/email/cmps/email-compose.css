@@ -31,3 +31,23 @@
     width: 50%;
     max-width: 300px;
 }
+
+.email-compose .return-button {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+
+.email-compose .return-button img {
+    width: 15px;
+    height: 15px;
+    transform: translateX(-3px);
+}
+
+.subject-container {
+    width: 75%;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

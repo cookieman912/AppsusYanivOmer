@@ -12,7 +12,7 @@ export default {
                         <div class="subject">{{email.subject}}</div>
                     </router-link>
                     <div class="li-end">
-                        <div><span>Recieved:</span> {{email.sentAt}}</div>
+                        <div>{{email.sentAt}}</div>
                         <button @click="deleteMail">X</button>
                     </div>
                     </div> 
@@ -23,11 +23,14 @@ export default {
 
     methods: {
         deleteMail() {
+            const msg = {
+                txt: 'E-mail deleted successfully'
+            }
+            eventBus.$emit('show-msg', msg);
             eventBus.$emit('deleteMail', this.email);
         },
         toggleMarked() {
             eventBus.$emit('markAsRead', this.email);
-            // console.log('email-preview:', this.email.id);
         }
     },
 }

@@ -8,6 +8,7 @@
 .email-preview {
     border-bottom: 1px solid black;
     padding-bottom: 5px;
+    padding-inline-end: 1rem ;
 }
 
 .email-list li {
@@ -26,6 +27,7 @@
     height: 15px;
     background-color: transparent;
     background: none;
+    cursor: pointer;
 }
 
 .preview-text {
@@ -39,4 +41,12 @@
 
 .li-end {
     display: flex;
+    gap: 5px;
+}
+
+.email-preview button {
+    background-color: #90ADC6;
+    border-radius: 5px;
+    cursor: pointer;
+
 }
