@@ -9,6 +9,7 @@ export default {
     `,
     created() {
     },
+
     components: {
         emailPreview
     }

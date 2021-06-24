@@ -7,7 +7,7 @@ export const storageService = {
     put,
     remove,
     postMany,
-    markMailAsRead
+    toggleMailRead
 }
 
 function query(entityType) {
@@ -50,6 +50,7 @@ function put(entityType, updatedEntity) {
 }
 
 function remove(entityType, entityId) {
+    console.log(entityId);
     return query(entityType)
         .then(entities => {
             const idx = entities.findIndex(entity => entity.id === entityId);
@@ -71,11 +72,11 @@ function _makeId(length = 5) {
     return text;
 }
 
-function markMailAsRead(entityType, entityId) {
+function toggleMailRead(entityType, entityId) {
     return query(entityType)
-    .then (entities => {
-        const entity = entities.find(entity => entity.id === entityId);
-        entity.isRead = true;
-        _save(entityType, entities)
-    })
-} 
+        .then(entities => {
+            const entity = entities.find(entity => entity.id === entityId);
+            entity.isRead = !entity.isRead;
+            _save(entityType, entities)
+        })
+}

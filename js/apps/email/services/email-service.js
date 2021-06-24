@@ -118,7 +118,7 @@ export const emailService = {
     query,
     getById,
     removeEmail,
-    markAsRead
+    toggleRead
 };
 
 function query() {
@@ -129,16 +129,18 @@ function query() {
         }
         return emails;
     });
-}
+};
 
 function getById(id) {
     return storageService.get(EMAIL_KEY, id)
-}
+};
 
 function removeEmail(id) {
-    storageService.remove(EMAIL_KEY, id);
-}
+    storageService.remove(EMAIL_KEY, id)
+    return query();
+};
 
-function markAsRead(id) {
-    storageService.markMailAsRead(EMAIL_KEY, id)
+function toggleRead(id) {
+    storageService.toggleMailRead(EMAIL_KEY, id)
+  ;  return query();
 }

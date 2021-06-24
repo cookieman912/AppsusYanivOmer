@@ -35,9 +35,10 @@ export default {
                 const { emailId } = this.$route.params;
                 emailService.getById(emailId)
                 .then((email) => {
-                    this.email = email
-                    emailService.markAsRead(this.email.id)
-                })
+                    this.email = email;
+                    if(this.email.isRead) return;
+                    emailService.toggleRead(this.email.id);
+                });
             }
         },
     },
