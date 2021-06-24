@@ -4,6 +4,12 @@
     flex-direction: column;
     width: 100%;
 }
+
+.email-preview {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+
 .email-list li {
     padding-top: 1rem;
     display: flex;
@@ -29,4 +35,8 @@
     justify-content: space-between;
     width: 100%;
     gap: 1rem;
+}
+
+.li-end {
+    display: flex;
 }

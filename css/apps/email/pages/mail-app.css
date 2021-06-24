@@ -1,0 +1,37 @@
+@import '../cmps/email-list.css';
+@import '../cmps/email-filter.css';
+@import '../cmps/email-compose.css';
+@import '../cmps/email-details.css';
+
+.email-home {
+    display: flex;
+}
+
+.nav-bar {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.email-home a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-bar a {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    width: 100px;
+    border-bottom: 2px solid #90ADC6;
+    padding-top: 1rem;
+    padding-bottom: 0.3rem;
+}
+
+.nav-bar a:hover {
+    box-shadow: 0px 0px 70px -20px #4952a59c inset;
+}
+
+.email-status {
+    display: inline;
+}

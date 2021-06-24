@@ -2,7 +2,7 @@ export default {
     props: ['emails'],
 
     template: `
-    <div>({{unreadMsgs}})</div>
+    <div class="email-status">({{unreadMsgs}})</div>
     `,
 
     data() {

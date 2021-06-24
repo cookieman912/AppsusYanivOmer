@@ -1,4 +1,4 @@
-import {eventBus} from '../../../services/event-bus-serivce.js'
+import { eventBus } from '../../../services/event-bus-serivce.js'
 
 export default {
     props: ['email'],
@@ -11,21 +11,23 @@ export default {
                     <router-link :to="'/mail/' + email.id">
                         <div class="subject">{{email.subject}}</div>
                     </router-link>
-                        <div><span>Sent:</span> {{email.sentAt}}</div>
+                    <div class="li-end">
+                        <div><span>Recieved:</span> {{email.sentAt}}</div>
                         <button @click="deleteMail">X</button>
+                    </div>
                     </div> 
              </li>
     `,
     created() {
-        this.email.userName = this.email.from.substr(0, this.email.from.indexOf('@'));
     },
 
     methods: {
         deleteMail() {
-           eventBus.$emit('deleteMail', this.email);
+            eventBus.$emit('deleteMail', this.email);
         },
         toggleMarked() {
             eventBus.$emit('markAsRead', this.email);
+            // console.log('email-preview:', this.email.id);
         }
     },
 }

@@ -1,0 +1,18 @@
+.email-details {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5rem;
+}
+
+.head-container {
+    display: flex;
+    flex: row;
+    justify-content: space-between;
+}
+
+.head-container img {
+    max-height: 15px;
+    background-color: none;
+    cursor: pointer;
+}
