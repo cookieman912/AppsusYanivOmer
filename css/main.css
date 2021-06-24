@@ -1,6 +1,7 @@
 @import './apps/email/pages/mail-app.css';
 @import './apps/keep/pages/keep-main.css';
 @import './pages/app-header.css';
+@import './cmps/user-msg.css';
 
 @font-face {
     font-family: roboto;

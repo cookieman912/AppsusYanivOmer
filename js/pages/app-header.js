@@ -4,7 +4,7 @@ export default {
             <h1 class="logo">Appsus</h1> 
             <nav class="page-nav"> 
                 <router-link to="/" active-class="active-link" exact>Home</router-link> 
-                <router-link to="/mail">O-mail</router-link>
+                <router-link to="/mail/main">O-mail</router-link>
                 <router-link to="/keep">y-keep</router-link> 
             </nav>
         </div>`

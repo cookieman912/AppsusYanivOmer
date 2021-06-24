@@ -113,13 +113,15 @@ const gEmails = [
     },
 ];
 const EMAIL_KEY = 'emails';
+const SENT_KEY = 'sent-emails';
 
 export const emailService = {
     query,
     getById,
     removeEmail,
     toggleRead,
-    sendEmail
+    sendEmail,
+    getOutbox
 };
 
 function query() {
@@ -132,11 +134,22 @@ function query() {
         });
 };
 
+function getOutbox() {
+    return storageService.query(SENT_KEY)
+        .then((emails) => {
+            if (!emails || !emails.length) return
+            return emails;
+        });
+}
+
+
+
 function getById(id) {
     return storageService.get(EMAIL_KEY, id)
 };
 
 function removeEmail(id) {
+    storageService.remove(SENT_KEY, id)
     return storageService.remove(EMAIL_KEY, id)
 };
 
@@ -156,6 +169,8 @@ function sendEmail(subject, body) {
     }
     newEmail.userName = newEmail.from.substr(0, newEmail.from.indexOf('@'));
     storageService.post(EMAIL_KEY, newEmail);
+    storageService.post(SENT_KEY, newEmail);
+
 };
 
 function _getDate() {
