@@ -9,7 +9,7 @@ export const noteService = {
     getById,
     getNextId,
     getPrevId,
-    addEmptyNote,
+    addNote,
     deleteNote,
     editNote,
 }
@@ -19,7 +19,73 @@ function query() {
 }
 
 
+function addNote(noteToAdd) {
 
+    switch (noteToAdd.type) {
+        case 'NoteTxt':
+            console.log('added text')
+            gNotes.push({
+                id: utilService.makeId(),
+                type: "NoteTxt",
+                isPinned: false,
+                info: {
+                    title: noteToAdd.info.title,
+                    txt: noteToAdd.info.content,
+                },
+                style: { backgroundColor: '#999999' },
+            });
+            break;
+
+        case 'NoteImg':
+            gNotes.push({
+                id: utilService.makeId(),
+                type: "NoteImg",
+                isPinned: false,
+                info: {
+                    title: noteToAdd.info.title,
+                    url: noteToAdd.info.content,
+                },
+                style: { backgroundColor: '#999999' },
+            })
+            break;
+
+        case 'NoteTodos':
+            const toDolist = noteToAdd.info.content.split(',').map(todo => {
+                return { txt: todo, isDone: false, id: utilService.makeId(), }
+            })
+            gNotes.push({
+                id: utilService.makeId(),
+                type: "NoteTodos",
+                isPinned: false,
+                info: {
+                    title: noteToAdd.info.title,
+                    todos: toDolist,
+                },
+                style: { backgroundColor: '#999999' },
+
+            })
+            console.log(gNotes[gNotes.length - 1])
+            break;
+
+        case 'NoteVideo':
+            gNotes.push({
+                id: utilService.makeId(),
+                type: "NoteVideo",
+                isPinned: false,
+                info: {
+                    title: noteToAdd.info.title,
+                    url: noteToAdd.info.content,
+                },
+                style: { backgroundColor: '#999999' },
+            })
+
+
+            break;
+    }
+    utilService.saveToStorage(NOTES_KEY, gNotes)
+
+
+}
 
 function editNote(noteToChange) {
     const idxToChange = gNotes.findIndex(note => note.id === noteToChange.id)

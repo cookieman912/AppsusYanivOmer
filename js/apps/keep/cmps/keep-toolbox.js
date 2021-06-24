@@ -6,15 +6,31 @@ export default {
          <input v-model="filterBy.text" @input="$emit('filter',filterBy) " type="text"> 
 
 
-       <h2> add Note! </h2>
+       <h2> choose note type </h2>
 
-       <button @click= "$emit('add', 'text')"> text </button>
+       <button @click= "changeType('NoteTxt')"> text </button>
 
-       <button @click= "$emit('add', 'image')"> image </button>
+       <button @click= "changeType('NoteImg')"> image </button>
 
-       <button @click= "$emit('add', 'video')"> video </button>
+       <button @click= "changeType('NoteVideo')"> video </button>
 
-       <button @click= "$emit('add', 'todos')"> todos </button>
+       <button @click= "changeType('NoteTodos')"> todos </button>
+
+ 
+       <form @submit.prevent="$emit('add',noteToAdd)">
+
+            <label for="noteTitle"> <h3>write your title!</h3> </label>
+
+            <input v-model="noteToAdd.info.title" type="text" id="noteTitle"> 
+
+            <label for="noteInfo"> <h3>{{inputByType}}</h3> </label>
+
+    
+          <input v-model="noteToAdd.info.content" type="text" id="noteInfo"> 
+          
+          <button>add note!</button>
+
+        </form>
 
           </header>`,
 
@@ -23,9 +39,45 @@ export default {
             filterBy: {
                 text: ''
             },
-            type: 'text'
+
+            noteToAdd: {
+                type: 'NoteTxt',
+                info: {
+                    title: '',
+                    content: ''
+                }
+
+            }
         }
+    },
+
+
+    computed: {
+        inputByType() {
+            switch (this.noteToAdd.type) {
+                case 'NoteTxt':
+                    return 'add text here!'
+                case 'NoteImg':
+                    return 'add image URL here!'
+
+                case 'NoteVideo':
+                    return 'add youtube Url Here!'
+
+                case 'NoteTodos':
+
+                    return 'add tasks seperated by commas here!'
+
+            }
+
+        }
+    },
+
+    methods: {
+        changeType(type) {
+            this.noteToAdd.type = type;
+        },
     }
+
 
 
 }

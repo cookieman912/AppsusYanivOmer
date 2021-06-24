@@ -27,8 +27,8 @@ export default {
     },
 
     methods: {
-        addNote(type) {
-            noteService.addEmptyNote(type)
+        addNote(noteToAdd) {
+            noteService.addNote(noteToAdd)
             noteService.query()
                 .then(
                     notes => {
