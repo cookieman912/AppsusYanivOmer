@@ -19,14 +19,15 @@ export default {
 
   <input v-bind:style="note.style" class="title" v-model="note.info.title" type="Text" id="title">
 
-  </p> write stuff here! </p>
-
   <textarea v-bind:style="note.style" class="text-input" v-model="note.info.txt"> {{note.info.txt}}</textarea>
 
- <label for="bgc">pick a color!</label>
+ 
+  <div class="color-picker"> <label for="bgc">pick a color!</label>
 
   <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
     v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
+
+   </div>
 
    <button>save</button> 
  </form > 
@@ -51,8 +52,11 @@ export default {
    
    <label for="url">put a url you want to save</label> 
 
+   <div class="color-picker"> <label for="bgc">pick a color!</label>
+
    <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
     v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
+</div>
 
     <button>save</button> 
     </form > 
