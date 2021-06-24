@@ -35,8 +35,6 @@ export default {
 
 </div>
 
-
-
 <div v-else-if="isImage" v-bind:style="note.style" class='note note-image-container'> 
 
 <router-link to="/keep"> <button>exit</button> </router-link>
@@ -47,10 +45,9 @@ export default {
      <input class="title" v-model="note.info.title" type="Text" id="title"> 
 
  
-
    <input  v-model="note.info.url" type="Text" id="url">
    
-   <label for="url">put a url you want to save</label> 
+   <label for="url">Image URL</label> 
 
    <div class="color-picker"> <label for="bgc">pick a color!</label>
 
@@ -73,18 +70,19 @@ export default {
 
 <form @submit.prevent="editNote">
 
+<div class="todo-header">
   <input class="title" v-model="note.info.title" type="Text" id="title">
 
-  '</p> write todos here! </p>'
 
     <button @click="addTodo"> add </button>
+</div>
   <ul>
     
     <li v-for="todo in note.info.todos ">
 
     <input  v-model="todo.txt" type="Text" id="todo">
 
-    <button v-if="todo.isDone"  @click="toggleDone(todo.id)">X</button>
+    <button class="isDone" v-if="todo.isDone"  @click="toggleDone(todo.id)">X</button>
 
     <button v-else  @click="toggleDone(todo.id)">V</button>
 
@@ -106,7 +104,8 @@ export default {
 
 
 
-<div v-else-if="isVideo" v-bind:style="note.style" class='note note-Video'> 
+<div v-else-if="isVideo" v-bind:style="note.style" class='note note-video'> 
+
 <router-link to="/keep"> <button>exit</button> </router-link>
 
    <iframe   width="420" height="315" v-bind:src="videoUrl">
@@ -116,10 +115,9 @@ export default {
      <input class="title" v-model="note.info.title" type="Text" id="title"> 
 
  
-
      <input  v-model="note.info.url" type="Text" id="url">
    
-    <label for="url">put a url you want to save</label> 
+    <label for="url">video URL</label> 
 
     <input class="background-color" v-model="note.style.backgroundColor"  type="color"  
 
