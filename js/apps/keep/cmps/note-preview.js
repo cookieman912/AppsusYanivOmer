@@ -1,9 +1,9 @@
 export default {
     props: ['note'],
-    template: ` <div v-bind:style="note.style"> 
-       <router-link :to="'/keep/details/'+note.id"> {{noteByType}}</router-link>
+    template: ` <span class="note.title"> 
+       <router-link :to="'/keep/details/'+note.id">{{noteByType}}</router-link>
 
-    </div>`,
+</span>`,
 
     computed: {
         noteByType() {

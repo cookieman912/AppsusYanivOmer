@@ -4,7 +4,7 @@ import noteList from "../cmps/note-list.js"
 
 
 export default {
-    template: `<div>
+    template: `<div class=main>
    <keep-toolbox @add='addNote' @filter='filterBy' />    
    <note-list :notes="this.filteredNotes" @delete='deleteNote'/>
    </div>           

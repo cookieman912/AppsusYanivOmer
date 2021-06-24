@@ -13,6 +13,8 @@ export default {
 
 <div ref="note-Container" v-else-if="isText" v-bind:style="note.style" class='note note-text'> 
 
+<router-link to="/keep"> <button>exit</button> </router-link> 
+
   <form @submit.prevent="editNote">
 
   <input v-bind:style="note.style" class="title" v-model="note.info.title" type="Text" id="title">
@@ -26,14 +28,17 @@ export default {
   <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
     v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
 
-  <button>save</button> 
+   <button>save</button> 
  </form > 
+
 
 </div>
 
 
 
 <div v-else-if="isImage" v-bind:style="note.style" class='note note-image-container'> 
+
+<router-link to="/keep"> <button>exit</button> </router-link>
 
 <img v-bind:src=note.info.url class="note-image" alt="">
 
@@ -49,8 +54,9 @@ export default {
    <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
     v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
 
-    <button>save</button>
+    <button>save</button> 
     </form > 
+   
 </div>
 
 
@@ -58,6 +64,8 @@ export default {
 
 
 <div v-else-if="isTodo" v-bind:style="note.style" class='note note-todo'> 
+
+<router-link to="/keep"> <button>exit</button> </router-link>
 
 <form @submit.prevent="editNote">
 
@@ -85,7 +93,7 @@ export default {
     <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
     v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
 
-  <button>save</button> 
+ <button>save</button> 
 
   </form >
 
@@ -95,7 +103,7 @@ export default {
 
 
 <div v-else-if="isVideo" v-bind:style="note.style" class='note note-Video'> 
-
+<router-link to="/keep"> <button>exit</button> </router-link>
 
    <iframe   width="420" height="315" v-bind:src="videoUrl">
    </iframe>
@@ -109,10 +117,11 @@ export default {
    
     <label for="url">put a url you want to save</label> 
 
-    <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
+    <input class="background-color" v-model="note.style.backgroundColor"  type="color"  
+
      v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
 
-     <button>save</button>
+     <button>save</button> 
      </form > 
 
 

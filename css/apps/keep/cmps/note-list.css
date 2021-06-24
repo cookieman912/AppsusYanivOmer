@@ -1,0 +1,54 @@
+@font-face {
+    font-family: roboto;
+    src: url(/fonts/Roboto.ttf);
+}
+
+.note-list {
+    font-family: roboto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    margin-top: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.note-list button {
+    background-color: #fad12cde;
+    border: none;
+    font-size: 1.3rem;
+    border-radius: 0.5em;
+    width: 60px;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.note-preview button:hover {
+    cursor: pointer;
+    background-color: #f0d66fde;
+}
+
+.note-preview {
+    margin: 5px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.note-title {
+    margin: auto;
+    margin-top: 50%;
+}
+
+.note-list a {
+    color: white;
+    text-decoration: none;
+    margin-top: 200px;
+    font-size: 3em
+}
+
+.note-list a:hover {
+    color: rgb(102, 102, 233);
+}

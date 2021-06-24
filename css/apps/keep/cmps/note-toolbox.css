@@ -1,0 +1,58 @@
+@font-face {
+    font-family: roboto;
+    src: url(/fonts/Roboto.ttf);
+}
+
+.keep-header input {
+    border: 0px solid black;
+    font-size: 1.3rem;
+    border-radius: 0.2em;
+    background-color: rgb(77, 137, 206);
+    color: white;
+}
+
+.keep-header button {
+    background-color: #fad12cde;
+    border: none;
+    font-size: 1.3rem;
+    border-radius: 0.5em;
+    width: 100px;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.keep-header button:hover {
+    cursor: pointer;
+    background-color: #f0d66fde;
+}
+
+.keep-header form {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    /* flex-wrap: wrap  ; */
+    align-items: center;
+    margin-top: 20px;
+}
+
+.keep-header form button {
+    margin-top: 10px
+}
+
+
+/* media */
+
+@media(max-width: 850px) {
+    .keep-header form {}
+    .keep-header form button {
+        margin-top: 10px
+    }
+    .keep-header button {
+        margin-top: 10px;
+    }
+    .note-add-options {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+}

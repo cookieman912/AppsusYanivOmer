@@ -2,10 +2,10 @@ import notePreview from "./note-preview.js";
 
 export default {
     props: ['notes'],
-    template: `<div class="note-list"> <h1> welcome to note-list!</h1> 
+    template: `<div class="note-list"> 
 
-<ul>
-<li class="note-preview" v-for="note in notes">
+<ul class="note-list">
+<li class="note-preview" v-for="note in notes" v-bind:style="note.style">
     <note-preview :note="note"/>
 
     <button @click= "$emit('delete', note.id)"> X </button>

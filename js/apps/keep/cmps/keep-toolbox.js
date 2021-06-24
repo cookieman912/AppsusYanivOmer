@@ -1,5 +1,7 @@
 export default {
-    template: ` <header class="keep-header">  
+    template: ` <header class="keep-header"> 
+
+    <h1> welcome to Y-Notes</h1>  
         <h3> search notes </h3>
         
         
@@ -7,15 +9,15 @@ export default {
 
 
        <h2> choose note type </h2>
+      <nav class="note-add-options">
+         <button @click= "changeType('NoteTxt')"> text </button>
 
-       <button @click= "changeType('NoteTxt')"> text </button>
+         <button @click= "changeType('NoteImg')"> image </button>
 
-       <button @click= "changeType('NoteImg')"> image </button>
+         <button @click= "changeType('NoteVideo')"> video </button>
 
-       <button @click= "changeType('NoteVideo')"> video </button>
-
-       <button @click= "changeType('NoteTodos')"> todos </button>
-
+         <button @click= "changeType('NoteTodos')"> todos </button>
+       </nav> 
  
        <form @submit.prevent="$emit('add',noteToAdd)">
 
