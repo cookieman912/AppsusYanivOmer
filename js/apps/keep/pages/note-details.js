@@ -11,19 +11,20 @@ export default {
 
 <div v-if="isNull" class='note-text'> loading </div>
 
-<div v-else-if="isText" class='note note-text'> 
+<div ref="note-Container" v-else-if="isText" v-bind:style="note.style" class='note note-text'> 
 
   <form @submit.prevent="editNote">
 
-  <input class="title" v-model="note.info.title" type="Text" id="title">
+  <input v-bind:style="note.style" class="title" v-model="note.info.title" type="Text" id="title">
 
   </p> write stuff here! </p>
 
-  <textarea class="text-input" v-model="note.info.txt"> {{note.info.txt}}</textarea>
+  <textarea v-bind:style="note.style" class="text-input" v-model="note.info.txt"> {{note.info.txt}}</textarea>
 
  <label for="bgc">pick a color!</label>
 
-  <input class="background-color" v-model="note.style.bgc" type="color" id="bgc">
+  <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
+    v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
 
   <button>save</button> 
  </form > 
@@ -32,7 +33,7 @@ export default {
 
 
 
-<div v-else-if="isImage" class='note note-image-container'> 
+<div v-else-if="isImage" v-bind:style="note.style" class='note note-image-container'> 
 
 <img v-bind:src=note.info.url class="note-image" alt="">
 
@@ -45,6 +46,9 @@ export default {
    
    <label for="url">put a url you want to save</label> 
 
+   <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
+    v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
+
     <button>save</button>
     </form > 
 </div>
@@ -53,7 +57,7 @@ export default {
 
 
 
-<div v-else-if="isTodo" class='note note-todo'> 
+<div v-else-if="isTodo" v-bind:style="note.style" class='note note-todo'> 
 
 <form @submit.prevent="editNote">
 
@@ -78,6 +82,9 @@ export default {
 
     </ul>
 
+    <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
+    v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
+
   <button>save</button> 
 
   </form >
@@ -85,23 +92,28 @@ export default {
 
 </div>
 
-<div v-else-if="isVideo" class='note note-Video'> 
 
 
-<iframe   width="420" height="315" v-bind:src="videoUrl">
-</iframe>
+<div v-else-if="isVideo" v-bind:style="note.style" class='note note-Video'> 
 
-<form @submit.prevent="editNote">   
+
+   <iframe   width="420" height="315" v-bind:src="videoUrl">
+   </iframe>
+
+   <form @submit.prevent="editNote">   
      <input class="title" v-model="note.info.title" type="Text" id="title"> 
 
  
 
-   <input  v-model="note.info.url" type="Text" id="url">
+     <input  v-model="note.info.url" type="Text" id="url">
    
-   <label for="url">put a url you want to save</label> 
+    <label for="url">put a url you want to save</label> 
 
-    <button>save</button>
-    </form > 
+    <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
+     v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
+
+     <button>save</button>
+     </form > 
 
 
 </div>
@@ -203,4 +215,6 @@ export default {
             }
         },
     },
+
+
 }

@@ -73,8 +73,8 @@ function addEmptyNote(type) {
                     txt: "default",
                     id: utilService.makeId()
                 },
-                style: { bgc: '#000000' },
-            }, );
+                style: { backgroundColor: '#999999' },
+            });
             break;
 
         case 'image':
@@ -86,7 +86,7 @@ function addEmptyNote(type) {
                     url: "/js/apps/keep/img/default.png.png",
                     title: "Me playing Mi"
                 },
-                style: { bgc: '#000000' },
+                style: { backgroundColor: '#999999' },
             })
             break;
 
@@ -103,7 +103,7 @@ function addEmptyNote(type) {
                     ]
 
                 },
-                style: { bgc: '#000000' },
+                style: { backgroundColor: '#999999' },
             })
             break;
 
@@ -116,10 +116,8 @@ function addEmptyNote(type) {
                     url: "defaultvideourl",
                     title: "Me playing Mi"
                 },
-                style: {
-                    bgc: '#000000'
-                }
-            }, )
+                style: { backgroundColor: '#999999' },
+            })
 
             break;
     }
@@ -141,7 +139,7 @@ function _createNotes() {
                     title: 'note',
                     txt: "Fullstack Me Baby!"
                 },
-                style: { bgc: '#000000' },
+                style: { backgroundColor: '#999999' },
             },
             {
                 id: utilService.makeId(),
@@ -154,7 +152,7 @@ function _createNotes() {
                 style: {
                     backgroundColor: "#00d"
                 },
-                style: { bgc: '#000000' },
+                style: { backgroundColor: '#999999' },
             },
 
             {
@@ -168,7 +166,7 @@ function _createNotes() {
                         { txt: "Do this", isDone: false, id: utilService.makeId() }
                     ]
                 },
-                style: { bgc: '#000000' },
+                style: { backgroundColor: '#999999' },
             }
         ]
     }
