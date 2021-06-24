@@ -1,9 +1,11 @@
 import { noteService } from "../services/note-service.js"
+import { utilService } from "../../../services/util-service.js"
 
 export default {
 
     template: ` 
 
+    
     
 <div  class="note-details">  
 
@@ -18,6 +20,10 @@ export default {
   </p> write stuff here! </p>
 
   <textarea class="text-input" v-model="note.info.txt"> {{note.info.txt}}</textarea>
+
+ <label for="bgc">pick a color!</label>
+
+  <input class="background-color" v-model="note.style.bgc" type="color" id="bgc">
 
   <button>save</button> 
  </form > 
@@ -47,12 +53,55 @@ export default {
 
 
 
-<div v-else-if="isTodo" class='note note-todo'> {{this.note}} is todo 
+<div v-else-if="isTodo" class='note note-todo'> 
+
+<form @submit.prevent="editNote">
+
+  <input class="title" v-model="note.info.title" type="Text" id="title">
+
+  '</p> write todos here! </p>'
+
+    <button @click="addTodo"> add </button>
+  <ul>
+    
+    <li v-for="todo in note.info.todos ">
+
+    <input  v-model="todo.txt" type="Text" id="todo">
+
+    <button v-if="todo.isDone"  @click="toggleDone(todo.id)">X</button>
+
+    <button v-else  @click="toggleDone(todo.id)">V</button>
+
+    <button @click="deleteTodo(todo.id)">delete</button> 
+
+    </li>
+
+    </ul>
+
+  <button>save</button> 
+
+  </form >
 
 
 </div>
 
-<div v-else-if="isVideo" class='note note-Video'> {{this.note}} is Video 
+<div v-else-if="isVideo" class='note note-Video'> 
+
+
+<iframe   width="420" height="315" v-bind:src="videoUrl">
+</iframe>
+
+<form @submit.prevent="editNote">   
+     <input class="title" v-model="note.info.title" type="Text" id="title"> 
+
+ 
+
+   <input  v-model="note.info.url" type="Text" id="url">
+   
+   <label for="url">put a url you want to save</label> 
+
+    <button>save</button>
+    </form > 
 
 
 </div>
@@ -76,7 +125,6 @@ export default {
 
     computed: {
         isText() {
-            console.log(this.note.type)
             return (this.note.type === 'NoteTxt')
         },
 
@@ -94,18 +142,47 @@ export default {
 
         isNull() {
             if (this.note === null) return true;;
+        },
+
+        videoUrl() {
+            if (this.note.info.url !== null) {
+
+                const videoUrl = this.note.info.url.replace('watch?v=', 'embed/')
+                return videoUrl;
+
+
+                // "https://www.youtube.com/watch?v=pRziGchtkFE"
+                // return `https://www.youtube.com/embed/${this.note.info.url}`
+            }
         }
+
 
     },
 
 
     methods: {
         editNote() {
-            console.log(this.note)
             noteService.editNote(this.note)
             noteService.query()
-                .then(notes => console.log(notes))
+        },
+
+
+        toggleDone(id) {
+            let idxToChange = this.note.info.todos.findIndex(todo => todo.id === id)
+            this.note.info.todos[idxToChange].isDone = !this.note.info.todos[idxToChange].isDone
+        },
+
+        deleteTodo(id) {
+            let idxToChange = this.note.info.todos.findIndex(todo => todo.id === id)
+            this.note.info.todos.splice(idxToChange, 1)
+
+        },
+
+        addTodo() {
+            this.note.info.todos.push({ txt: "Do that", isDone: false, id: utilService.makeId(), }, )
         }
+
+
     },
 
     watch: {
