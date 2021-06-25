@@ -29,7 +29,7 @@ const routes = [{
         {
             path: ':emailId?',
             component: emailDetails
-        }
+        },
     ]
 },
 

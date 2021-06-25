@@ -22,6 +22,7 @@
     border-radius: 5px;
     background-color: #90ADC6;
     color: #E9EAEC;
+    cursor: pointer;
 }
 
 .email-compose input {
@@ -37,7 +38,9 @@
     width: 25px;
     height: 25px;
     text-align: center;
+    cursor: pointer;
 }
+
 
 .email-compose .return-button img {
     width: 15px;
@@ -51,4 +54,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media (max-width: 750px) {
+
+    .email-compose input{
+        min-width: 150px;
+    }
 }

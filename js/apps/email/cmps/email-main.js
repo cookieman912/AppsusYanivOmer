@@ -36,6 +36,7 @@ export default {
                 })
         },
         markEmail(email) {
+            console.log(email);
             emailService.toggleRead(email.id)
                 .then((emails) => {
                     this.emails = emails

@@ -2,7 +2,6 @@
 @import '../cmps/email-filter.css';
 @import '../cmps/email-compose.css';
 @import '../cmps/email-details.css';
-
 .email-home {
     display: flex;
 }
@@ -37,8 +36,24 @@
 }
 
 @media (max-width: 750px) {
-
-    .nav-bar a{
-        width: 80px;
+    .email-home {
+        flex-direction: column;
+    }
+    .nav-bar {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .nav-bar a {
+        border-bottom: none;
+        padding: 0;
+        width: 100px;
+    }
+    .nav-bar a:not(:last-child) {
+        border-right: 1px solid #90ADC6;
+    }
+    .nav-bar a:hover {
+        box-shadow: none;
+        color: rgba(136, 221, 115, 0.774);
     }
 }

@@ -2,6 +2,7 @@
 @import './apps/keep/pages/keep-main.css';
 @import './pages/app-header.css';
 @import './cmps/user-msg.css';
+@import './pages/app-footer.css';
 
 @font-face {
     font-family: roboto;
@@ -20,4 +21,10 @@ body {
     color: #E9EAEC;
     margin: 0;
     text-align: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+.content-wrap {
+    padding-bottom: 5rem;
 }

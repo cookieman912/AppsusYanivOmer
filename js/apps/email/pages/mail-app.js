@@ -9,7 +9,6 @@ export default {
     template: `
         <div>
             <div class="email-home">
-                <!-- <img class="mail-burger" src="img/burger.png"> -->
                 <aside class="nav-bar">
                     <router-link :to="'/mail/compose'">Compose</router-link>
                     <router-link :to="'/mail/main'">Inbox<email-status :emails="emails" /></router-link>
