@@ -1,63 +1,219 @@
-    /* general */
-    
-    .note {
-        text-align: center;
-        box-sizing: border-box;
-        margin: auto;
-        margin-top: 200px;
-        border: 2px solid black;
-        max-width: 880px;
-        height: 300px;
-    }
-    
-    .title {
-        width: 80%;
-        margin-bottom: 5px;
-        font-size: 2em
-    }
-    
-    .note-details button {
-        background-color: #fad12cde;
-        border: none;
-        font-size: 1.3rem;
-        border-radius: 0.5em;
-        width: 150px;
-        margin-left: 7px;
-        margin-right: 7px;
-        margin-top: 7px;
-    }
-    
-    .note-details button:hover {
-        cursor: pointer;
-        background-color: #f0d66fde;
-    }
-    /* type: text */
-    
-    .text-input {
-        margin: auto 0 auto;
-        width: 80%;
-        height: 150px;
-        flex: none;
-        text-align: start;
-        text-align: center;
-        border: none;
-    }
-    
-    input.title {
-        border: none;
-        text-align: center;
-    }
-    /* type: image */
-    
-    .note-image-container {
-        height: 500px;
-        align-items: center;
-    }
-    
-    .note-image {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        height: 80%;
-        width: 80%;
-        object-fit: cover;
-    }
+        /* general */
+        
+        .note {
+            text-align: center;
+            box-sizing: border-box;
+            margin: auto;
+            margin-top: 80px;
+            border: 2px solid black;
+            max-width: 880px;
+            height: 500px;
+        }
+        
+        .note input {
+            background-color: rgb(77, 137, 206);
+            border: none;
+            border-radius: 0.3em;
+        }
+        
+        .title {
+            width: 80%;
+            margin-bottom: 5px;
+            font-size: 2em
+        }
+        
+        .note-details button {
+            background-color: #fad12cde;
+            border: none;
+            font-size: 1.3rem;
+            border-radius: 0.5em;
+            width: 150px;
+            margin-left: 7px;
+            margin-right: 7px;
+            margin-top: 7px;
+        }
+        
+        .color-picker .icon-button {
+            width: 45px;
+            margin-left: 50px
+        }
+        
+        .note-details button:hover {
+            cursor: pointer;
+            background-color: #f0d66fde;
+        }
+        
+        .background-color {
+            visibility: hidden;
+        }
+        
+        .paintbrush {
+            height: 30px;
+        }
+        
+        .disable {
+            pointer-events: fill;
+        }
+        
+        label {
+            position: relative
+        }
+        
+        label:after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        
+        label:hover {
+            cursor: pointer;
+        }
+        
+        @media(max-width:800px) {
+            .note {
+                margin-top: 40px;
+            }
+            .details-footer .details-footer button {
+                width: 30px;
+                margin-top: 15px;
+            }
+        }
+        /* type: text */
+        
+        .text-input {
+            margin: auto 0 auto;
+            width: 80%;
+            height: 320px;
+            flex: none;
+            text-align: start;
+            text-align: center;
+            border: none;
+            font-size: 1.7em;
+        }
+        
+        input.title {
+            border: none;
+            text-align: center;
+        }
+        /* type: image */
+        
+        .note-image-container {
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .note-image-container form input {
+            margin-bottom: 30px;
+        }
+        
+        .note-image-container form input:last-child {
+            margin-bottom: 6px
+        }
+        
+        .note-image {
+            max-height: 250px;
+            max-width: 350px;
+            object-fit: cover;
+            margin: auto;
+        }
+        
+        .note-image .color-picker {
+            height: 50px;
+            margin-bottom: 0;
+        }
+        
+        @media(max-width:800px) {
+            .note-image-container form input:last-child {
+                margin-bottom: 5px
+            }
+        }
+        /* video */
+        
+        .note-video {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .note-video * {
+            margin-bottom: 13px
+        }
+        
+        .note-video .color-picker {
+            height: 50px;
+        }
+        
+        .color-picker .icon-button {
+            width: 45px;
+            margin-left: 50px;
+            height: 37px
+        }
+        
+        @media(max-width:800px) {
+            iframe {
+                width: 355px;
+            }
+        }
+        /* todos */
+        
+        .note-todo {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: auto;
+        }
+        
+        .note-todo * {
+            margin-bottom: 10px;
+        }
+        
+        .note-todo form {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .note-todo ul {
+            display: flex;
+            flex-direction: column;
+            list-style-type: none;
+            width: 100%;
+            align-items: center;
+        }
+        
+        .note-todo ul li {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-content: flex-start;
+            margin-right: 24px;
+        }
+        
+        .note-todo ul li input {
+            width: 40%;
+            align-self: center;
+        }
+        
+        .note-todo ul li button {
+            width: 80px
+        }
+        
+        .todo-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .save-button {
+            margin-bottom: 6px;
+        }
+        
+        @media (max-width:800px) {}

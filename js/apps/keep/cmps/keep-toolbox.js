@@ -1,7 +1,6 @@
 export default {
     template: ` <header class="keep-header"> 
 
-    <h1> welcome to Y-Notes</h1>  
         <h3> search notes </h3>
         
         
@@ -21,6 +20,8 @@ export default {
  
        <form @submit.prevent="$emit('add',noteToAdd)">
 
+       <div class=new-note-details>
+
             <label for="noteTitle"> <h3>write your title!</h3> </label>
 
             <input v-model="noteToAdd.info.title" type="text" id="noteTitle"> 
@@ -29,8 +30,10 @@ export default {
 
     
           <input v-model="noteToAdd.info.content" type="text" id="noteInfo"> 
+
+       </div>
           
-          <button>add note!</button>
+        <button>add note!</button> 
 
         </form>
 
