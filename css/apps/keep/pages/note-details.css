@@ -101,12 +101,20 @@
             border: none;
             text-align: center;
         }
+        
+        .note-text .save-button {
+            margin-top: 13px;
+        }
         /* type: image */
         
         .note-image-container {
             height: 500px;
             display: flex;
             flex-direction: column;
+        }
+        
+        .note-image-container .save-button {
+            margin-bottom: 20px;
         }
         
         .note-image-container form input {
@@ -143,16 +151,17 @@
         }
         
         .note-video * {
-            margin-bottom: 13px
+            margin-bottom: 30px
         }
         
         .note-video .color-picker {
-            height: 50px;
+            height: 25px;
+            margin-bottom: 20px;
         }
         
         .color-picker .icon-button {
             width: 45px;
-            margin-left: 50px;
+            margin-left: 60px;
             height: 37px
         }
         
@@ -195,11 +204,12 @@
             justify-content: space-evenly;
             align-content: flex-start;
             margin-right: 24px;
+            align-content: center;
         }
         
         .note-todo ul li input {
             width: 40%;
-            align-self: center;
+            margin-bottom: none;
         }
         
         .note-todo ul li button {

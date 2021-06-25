@@ -97,7 +97,7 @@ export default {
 
     <button v-else  @click="toggleDone(todo.id)">V</button>
 
-    <button @click="deleteTodo(todo.id)">delete</button> 
+    <button type="button" @click="deleteTodo(todo.id)">delete</button> 
 
     </li>
 
@@ -196,7 +196,7 @@ export default {
         },
 
         isNull() {
-            if (this.note === null) return true;;
+            if (this.note === null) return true;
         },
 
         videoUrl() {

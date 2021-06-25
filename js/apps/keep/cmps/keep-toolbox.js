@@ -22,18 +22,23 @@ export default {
 
        <div class=new-note-details>
 
-            <label for="noteTitle"> <h3>write your title!</h3> </label>
+
+       <div class=note-input>
+            <label for="noteTitle"> <h3>write your title:</h3> </label>
 
             <input v-model="noteToAdd.info.title" type="text" id="noteTitle"> 
+</div>
 
+<div class=note-input>
             <label for="noteInfo"> <h3>{{inputByType}}</h3> </label>
 
     
           <input v-model="noteToAdd.info.content" type="text" id="noteInfo"> 
+          </div>
 
        </div>
           
-        <button>add note!</button> 
+        <button>add note</button> 
 
         </form>
 
@@ -61,16 +66,16 @@ export default {
         inputByType() {
             switch (this.noteToAdd.type) {
                 case 'NoteTxt':
-                    return 'add text here!'
+                    return 'add text here:'
                 case 'NoteImg':
-                    return 'add image URL here!'
+                    return 'add image URL here:'
 
                 case 'NoteVideo':
-                    return 'add youtube Url Here!'
+                    return 'add youtube Url Here:'
 
                 case 'NoteTodos':
 
-                    return 'add tasks seperated by commas here!'
+                    return 'add tasks seperated by commas here:'
 
             }
 

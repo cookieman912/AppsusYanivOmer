@@ -47,7 +47,7 @@
 .new-note-details {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -56,10 +56,32 @@
     align-content: center;
 }
 
+.note-input:first-child {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.note-input:last-child {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.note-input:last-child label {
+    width: 50%;
+}
+
+.note-input label {
+    width: 300px;
+}
+
 
 /* media */
 
-@media(max-width: 850px) {
+@media(max-width: 950px) {
     .new-note-details {
         flex-direction: column;
     }
@@ -73,5 +95,24 @@
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
+    }
+    .note-input {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+    .note-input:first-child {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .note-input:last-child {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
     }
 }

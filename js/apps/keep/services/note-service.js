@@ -12,6 +12,7 @@ export const noteService = {
     addNote,
     deleteNote,
     editNote,
+    pinNote,
 }
 
 function query() {
@@ -93,6 +94,12 @@ function editNote(noteToChange) {
     gNotes[idxToChange] = noteToChange;
     utilService.saveToStorage(NOTES_KEY, gNotes)
 
+}
+
+function pinNote(noteId) {
+    const idx = gNotes.findIndex(note => note.id === noteId);
+    gNotes[idx].isPinned = !gNotes[idx].isPinned
+    utilService.saveToStorage(NOTES_KEY, gNotes)
 }
 
 function deleteNote(noteId) {
