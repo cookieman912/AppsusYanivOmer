@@ -48,7 +48,7 @@
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    align-content: center;
+    align-items: center;
 }
 
 .new-note-details input {
@@ -60,7 +60,9 @@
 /* media */
 
 @media(max-width: 850px) {
-    .keep-header form {}
+    .new-note-details {
+        flex-direction: column;
+    }
     .keep-header form button {
         margin-top: 10px
     }

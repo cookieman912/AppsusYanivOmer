@@ -22,14 +22,19 @@ export default {
   <textarea v-bind:style="note.style" class="text-input" v-model="note.info.txt"> {{note.info.txt}}</textarea>
 
  
-  <div class="color-picker"> <label for="bgc">pick a color!</label>
+  <div class="color-picker">
 
-  <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
+<button type="button" class="disable icon-button">
+
+       <label class="label-icon" for="bgc">
+      <img class="paintbrush" src="js/apps/keep/img/paintbrush.png" alt="paint"> </label></button>
+      <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
     v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
 
+ 
    </div>
 
-   <button>save</button> 
+   <button class="save-button">save</button> 
  </form > 
 
 
@@ -49,13 +54,19 @@ export default {
    
    <label for="url">Image URL</label> 
 
-   <div class="color-picker"> <label for="bgc">pick a color!</label>
+   <div class="color-picker">
+   <button type="button" class="disable icon-button">
 
-   <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
-    v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
+    <label class="label-icon" for="bgc">
+    <img class="paintbrush" src="js/apps/keep/img/paintbrush.png" alt="paint"> </label></button>
+    <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
+     v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
+
+
 </div>
 
-    <button>save</button> 
+
+<button class="save-button">save</button> 
     </form > 
    
 </div>
@@ -92,10 +103,19 @@ export default {
 
     </ul>
 
-    <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
-    v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
+    <div class="color-picker">
+   <button type="button" class="disable icon-button">
 
- <button>save</button> 
+    <label class="label-icon" for="bgc">
+    <img class="paintbrush" src="js/apps/keep/img/paintbrush.png" alt="paint"> </label></button>
+    <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
+     v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
+
+
+</div>
+
+ 
+<button class="save-button">save</button> 
 
   </form >
 
@@ -119,21 +139,33 @@ export default {
    
     <label for="url">video URL</label> 
 
-    <input class="background-color" v-model="note.style.backgroundColor"  type="color"  
 
-     v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
+    <div class="color-picker">
 
-     <button>save</button> 
+<button type="button" class="disable icon-button">
+
+       <label class="label-icon" for="bgc">
+      <img class="paintbrush" src="js/apps/keep/img/paintbrush.png" alt="paint"> </label></button>
+      <input class="background-color" v-model="note.style.backgroundColor"     type="color"  
+    v-on:input="note.style.backgroundColor= $event.target.value" id="bgc">
+
+ 
+   </div>
+
+
+
+
+   <button class="save-button">save</button> 
      </form > 
 
 
 </div>
 
 
+<footer class="details-footer">
 <router-link :to="'/keep/details/'+this.prevNoteId"> <button> < previous </button></router-link>
 <router-link :to="'/keep/details/'+this.nextNoteId"> <button> next > </button></router-link>
-
-
+</footer>
 
 </div>`,
 
