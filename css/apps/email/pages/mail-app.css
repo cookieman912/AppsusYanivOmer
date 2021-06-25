@@ -8,7 +8,7 @@
 }
 
 .nav-bar {
-    margin-top: 0.5rem;
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
 }
@@ -34,4 +34,11 @@
 
 .email-status {
     display: inline;
+}
+
+@media (max-width: 750px) {
+
+    .nav-bar a{
+        width: 80px;
+    }
 }

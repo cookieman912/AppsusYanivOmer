@@ -1,14 +1,13 @@
 .email-details {
-    margin-top: 1rem;
+    margin: 5rem auto 0;
     display: flex;
     flex-direction: column;
     text-align: left;
     padding: 5px;
     border: 1px solid black;
-    max-width: 80%;
+    width: 70%;
+    max-width: 100%;
     background-color: #90ADC6;
-    margin: auto;
-    margin-top: 1rem;
     border-radius: 5px;
 }
 

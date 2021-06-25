@@ -6,7 +6,7 @@ import emailFilter from "./email-filter.js";
 
 export default {
     template: `
-    <div>
+    <div class="main-list">
         <email-filter @filtered="setFilter" />
         <email-list :emails="mailsToShow" />         
     </div>

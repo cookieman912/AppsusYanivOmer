@@ -4,16 +4,16 @@ export default {
     props: ['email'],
     template: `
             <li class="email-preview">     
-                <img v-if="email.isRead" @click="toggleMarked" src="img/read.png">
-                <img v-else @click="toggleMarked" src="img/unread.png">
+                <img class="prev-img" v-if="email.isRead" @click="toggleMarked" src="img/read.png">
+                <img class="prev-img" v-else @click="toggleMarked" src="img/unread.png">
                 <div class="preview-text">
-                    <div>{{email.userName}}</div>
-                    <router-link :to="'/mail/' + email.id">
-                        <div class="subject">{{email.subject}}</div>
+                    <div class="prev-user">{{email.userName}}</div>
+                    <router-link class="prev-subject" :to="'/mail/' + email.id">
+                        {{email.subject}}
                     </router-link>
                     <div class="li-end">
-                        <div>{{email.sentAt}}</div>
-                        <button @click="deleteMail">X</button>
+                        <div class="prev-date">{{email.sentAt}}</div>
+                        <button class="prev-delete" @click="deleteMail">X</button>
                     </div>
                     </div> 
              </li>
