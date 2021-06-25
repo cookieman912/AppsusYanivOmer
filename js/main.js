@@ -1,5 +1,5 @@
     import appHeader from "./pages/app-header.js";
-    import { router } from "./services/router-service.js"
+    import { router } from "./services/router.js"
     import userMsg from "./cmps/user-msg.js";
 
     const options = {
