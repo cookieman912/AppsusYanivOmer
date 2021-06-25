@@ -9,7 +9,8 @@ const gEmails = [
         from: 'omerandyaniv@coding.academy',
         userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
-        id: utilService.makeId(15)
+        id: utilService.makeId(15),
+        isSent: false
     },
     {
         subject: 'Did Rotem cut his hair?',
@@ -19,7 +20,8 @@ const gEmails = [
         from: 'omerandyaniv@coding.academy',
         userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
-        id: utilService.makeId(15)
+        id: utilService.makeId(15),
+        isSent: false
     },
     {
         subject: 'Coding Academy final sprint',
@@ -29,7 +31,8 @@ const gEmails = [
         from: 'omerandyaniv@coding.academy',
         userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
-        id: utilService.makeId(15)
+        id: utilService.makeId(15),
+        isSent: false
     },
     {
         subject: 'This is hard AF',
@@ -39,7 +42,8 @@ const gEmails = [
         from: 'omerandyaniv@coding.academy',
         userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
-        id: utilService.makeId(15)
+        id: utilService.makeId(15),
+        isSent: false
     },
     {
         subject: 'Nice to wheat you',
@@ -49,7 +53,8 @@ const gEmails = [
         from: 'omerandyaniv@coding.academy',
         userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
-        id: utilService.makeId(15)
+        id: utilService.makeId(15),
+        isSent: false
     },
     {
         subject: 'WAZZUUUPPPPPP',
@@ -59,7 +64,8 @@ const gEmails = [
         from: 'omerandyaniv@coding.academy',
         userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
-        id: utilService.makeId(15)
+        id: utilService.makeId(15),
+        isSent: false
     },
     {
         subject: 'PUKIMUKISHUKI',
@@ -69,7 +75,8 @@ const gEmails = [
         from: 'omerandyaniv@coding.academy',
         userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
-        id: utilService.makeId(15)
+        id: utilService.makeId(15),
+        isSent: false
     },
     {
         subject: 'Shalom',
@@ -79,7 +86,8 @@ const gEmails = [
         from: 'omerandyaniv@coding.academy',
         userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
-        id: utilService.makeId(15)
+        id: utilService.makeId(15),
+        isSent: false
     },
     {
         subject: 'Fire Stav Yaar-Bar!!!',
@@ -89,7 +97,8 @@ const gEmails = [
         from: 'omerandyaniv@coding.academy',
         userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
-        id: utilService.makeId(15)
+        id: utilService.makeId(15),
+        isSent: false
     },
     {
         subject: 'Assaf Margalit, who are you?',
@@ -99,7 +108,8 @@ const gEmails = [
         from: 'omerandyaniv@coding.academy',
         userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
-        id: utilService.makeId(15)
+        id: utilService.makeId(15),
+        isSent: false
     },
     {
         subject: 'Bittons jokes',
@@ -109,7 +119,8 @@ const gEmails = [
         from: 'omerandyaniv@coding.academy',
         userName: 'omerandyaniv',
         to: 'rotemcarmon@yaron.biton',
-        id: utilService.makeId(15)
+        id: utilService.makeId(15),
+        isSent: false
     },
 ];
 const EMAIL_KEY = 'emails';
@@ -165,6 +176,7 @@ function sendEmail(subject, body) {
         sentAt: _getDate(),
         from: 'omerandyaniv@coding.academy',
         to: 'rotemcarmon@yaron.biton',
+        isSent: true
 
     }
     newEmail.userName = newEmail.from.substr(0, newEmail.from.indexOf('@'));
