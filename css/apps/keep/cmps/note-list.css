@@ -43,7 +43,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+}
+
+.note-preview .button {
+    margin-bottom: 5px;
 }
 
 .note-title {
@@ -55,7 +59,7 @@
     color: white;
     text-decoration: none;
     margin-top: 200px;
-    font-size: 3em
+    font-size: 1.5em
 }
 
 .note-list a:hover {

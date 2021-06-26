@@ -59,10 +59,18 @@ export default {
                 .then(notes => {
                     this.notes = notes;
                     this.filterBy(this.filter)
-
+                    const currNote = notes.find(note => {
+                        return note.id === id
+                    })
+                    if (currNote.pin.isPinned) {
+                        const msg = { txt: 'pinned note' }
+                        eventBus.$emit('show-msg', msg);
+                    } else {
+                        const msg = { txt: 'unpinned note' }
+                        eventBus.$emit('show-msg', msg)
+                    }
                 })
-            const msg = { txt: 'Note pinned' }
-            eventBus.$emit('show-msg', msg);
+
 
         },
 

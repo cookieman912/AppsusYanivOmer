@@ -3,7 +3,6 @@ import { storageService } from "../../../services/async-storage-service.js";
 
 const NOTES_KEY = 'notes'
 
-const gNotes = _createNotes();
 export const noteService = {
     query,
     getById,
@@ -16,7 +15,7 @@ export const noteService = {
 }
 
 function query() {
-    return storageService.query(NOTES_KEY);
+    return _createNotes();
 }
 
 
@@ -30,7 +29,7 @@ function addNote(noteToAdd) {
                 type: "NoteTxt",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: noteToAdd.info.title,
@@ -46,7 +45,7 @@ function addNote(noteToAdd) {
                 type: "NoteImg",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: noteToAdd.info.title,
@@ -65,7 +64,7 @@ function addNote(noteToAdd) {
                 type: "NoteTodos",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: noteToAdd.info.title,
@@ -82,7 +81,7 @@ function addNote(noteToAdd) {
                 type: "NoteVideo",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: noteToAdd.info.title,
@@ -96,7 +95,6 @@ function addNote(noteToAdd) {
     }
     return storageService.post(NOTES_KEY, newNote)
         .then(note => {
-            gNotes.push(note)
             return query()
         })
 
@@ -105,20 +103,27 @@ function addNote(noteToAdd) {
 }
 
 function editNote(noteToChange) {
-    const idxToChange = gNotes.findIndex(note => note.id === noteToChange.id)
     return storageService.put(NOTES_KEY, noteToChange)
 
 }
 
 function pinNote(noteId) {
-    const noteToChange = gNotes.find(note => note.id === noteId);
-    noteToChange.pin.isPinned = !noteToChange.pin.isPinned
-    if (noteToChange.pin.isPinned) noteToChange.pin.pinImage = '/js/apps/keep/img/unpin.png'
-    else noteToChange.pin.pinImage = "/js/apps/keep/img/pin.png"
-    return storageService.put(NOTES_KEY, noteToChange)
-        .then(note => {
-            return query()
-        })
+    let noteToChange
+    return storageService.get(NOTES_KEY, noteId).then(note => {
+        noteToChange = note;
+        noteToChange.pin.isPinned = !noteToChange.pin.isPinned
+
+        if (noteToChange.pin.isPinned) noteToChange.pin.pinImage = 'js/apps/keep/img/unpin.png'
+
+        else noteToChange.pin.pinImage = "js/apps/keep/img/pin.png"
+
+        return storageService.put(NOTES_KEY, noteToChange)
+            .then(note => {
+                return query()
+            })
+    });
+
+
 
 }
 
@@ -137,153 +142,112 @@ function getById(idToFind) {
 }
 
 function getNextId(currNote) {
-    let nextIdx = gNotes.findIndex(note => note.id === currNote.id) + 1
-    if (nextIdx > gNotes.length - 1)
-        nextIdx = 0;
-    return gNotes[nextIdx].id;
+    return storageService.query(NOTES_KEY)
+        .then(notes => {
+            const nextIdx = notes.findIndex(note => {
+                return currNote.id === note.id
+            })
+            if (nextIdx + 1 === notes.length)
+                return notes[0].id;
+            else
+                return notes[nextIdx + 1].id
+        })
 }
 
 function getPrevId(currNote) {
-    let nextIdx = gNotes.findIndex(note => note.id === currNote.id) - 1
-    if (nextIdx < 0)
-        nextIdx = gNotes.length - 1;
-    return gNotes[nextIdx].id;
+    return storageService.query(NOTES_KEY)
+        .then(notes => {
+            const nextIdx = notes.findIndex(note => {
+                return currNote.id === note.id
+            })
+            if (nextIdx - 1 <= 0)
+                return notes[notes.length - 1].id;
+            else
+                return notes[nextIdx - 1].id
+        })
 
 }
 
-function addEmptyNote(type) {
 
-    switch (type) {
-        case 'text':
-            gNotes.push({
-                id: utilService.makeId(),
-                type: "NoteTxt",
-                pin: {
-                    isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
-                },
-                info: {
-                    title: 'note',
-                    txt: "default",
-                    id: utilService.makeId()
-                },
-                style: { backgroundColor: '#999999' },
-            });
-            break;
-
-        case 'image':
-            gNotes.push({
-                id: utilService.makeId(),
-                type: "NoteImg",
-                pin: {
-                    isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
-                },
-                info: {
-                    url: "/js/apps/keep/img/default.png.png",
-                    title: "Me playing Mi"
-                },
-                style: { backgroundColor: '#999999' },
-            })
-            break;
-
-        case 'todos':
-            gNotes.push({
-                id: utilService.makeId(),
-                type: "NoteTodos",
-                pin: {
-                    isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
-                },
-                info: {
-                    title: "How was it:",
-                    todos: [
-                        { txt: "Do that", isDone: false, id: utilService.makeId(), },
-                        { txt: "Do this", isDone: false, id: utilService.makeId(), }
-                    ]
-
-                },
-                style: { backgroundColor: '#999999' },
-            })
-            break;
-
-        case 'video':
-            gNotes.push({
-                id: utilService.makeId(),
-                type: "NoteVideo",
-                pin: {
-                    isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
-                },
-                info: {
-                    url: "defaultvideourl",
-                    title: "Me playing Mi"
-                },
-                style: { backgroundColor: '#999999' },
-            })
-
-            break;
-    }
-
-    utilService.saveToStorage(NOTES_KEY, gNotes)
-}
 
 function _createNotes() {
-    let notes = utilService.loadFromStorage(NOTES_KEY);
+    let notes;
+    return (storageService.query(NOTES_KEY)).then(broughtNotes => {
+        notes = broughtNotes;
+
+        if (!notes || !notes.length) {
+            notes = [{
+                    id: utilService.makeId(),
+                    type: "NoteTxt",
+                    pin: {
+                        isPinned: false,
+                        pinImage: "js/apps/keep/img/pin.png"
+                    },
+                    info: {
+                        title: 'default text',
+                        txt: "default mc default"
+                    },
+                    style: { backgroundColor: '#999999' },
+                },
+                {
+                    id: utilService.makeId(),
+                    type: "NoteImg",
+                    pin: {
+                        isPinned: false,
+                        pinImage: "js/apps/keep/img/pin.png"
+                    },
+                    info: {
+                        url: "js/apps/keep/img/default.png.png",
+                        title: "yaniv's D&D character"
+                    },
+                    style: {
+                        backgroundColor: "#00d"
+                    },
+                    style: { backgroundColor: '#999999' },
+                },
+
+                {
+                    id: utilService.makeId(),
+                    type: "NoteTodos",
+                    pin: {
+                        isPinned: false,
+                        pinImage: "js/apps/keep/img/pin.png"
+                    },
+                    info: {
+                        title: "default todos",
+                        todos: [
+                            { txt: "Do that", isDone: false, id: utilService.makeId() },
+                            { txt: "Do this", isDone: false, id: utilService.makeId() }
+                        ]
+                    },
+                    style: { backgroundColor: '#999999' },
+                },
+                {
+                    id: utilService.makeId(),
+                    type: "NoteVideo",
+                    pin: {
+                        isPinned: false,
+                        pinImage: "js/apps/keep/img/pin.png"
+                    },
+                    info: {
+                        title: 'default video',
+                        url: 'https://www.youtube.com/watch?v=pHXDMe6QV-U',
+                    },
+                    style: { backgroundColor: '#999999' },
+                },
+            ]
+            return storageService.postMany(NOTES_KEY, notes).then(notesToBring => {
 
 
-    if (!notes || !notes.length) {
-        notes = [{
-                id: utilService.makeId(),
-                type: "NoteTxt",
-                pin: {
-                    isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
-                },
-                info: {
-                    title: 'note',
-                    txt: "Fullstack Me Baby!"
-                },
-                style: { backgroundColor: '#999999' },
-            },
-            {
-                id: utilService.makeId(),
-                type: "NoteImg",
-                pin: {
-                    isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
-                },
-                info: {
-                    url: "/js/apps/keep/img/default.png.png",
-                    title: "Me playing Mi"
-                },
-                style: {
-                    backgroundColor: "#00d"
-                },
-                style: { backgroundColor: '#999999' },
-            },
-
-            {
-                id: utilService.makeId(),
-                type: "NoteTodos",
-                pin: {
-                    isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
-                },
-                info: {
-                    title: "How was it:",
-                    todos: [
-                        { txt: "Do that", isDone: false, id: utilService.makeId() },
-                        { txt: "Do this", isDone: false, id: utilService.makeId() }
-                    ]
-                },
-                style: { backgroundColor: '#999999' },
-            }
-        ]
-    }
+                return notesToBring
+            })
+        }
 
 
-    utilService.saveToStorage(NOTES_KEY, notes)
-    return notes;
+
+
+        return notes;
+    })
+
 
 }

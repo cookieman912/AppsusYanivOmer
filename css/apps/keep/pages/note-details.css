@@ -22,6 +22,10 @@
             font-size: 2em
         }
         
+        .note button:first-child {
+            margin-top: 5px;
+        }
+        
         .note-details button {
             background-color: #fad12cde;
             border: none;
@@ -30,12 +34,16 @@
             width: 150px;
             margin-left: 7px;
             margin-right: 7px;
-            margin-top: 7px;
+            margin-top: px;
         }
         
         .color-picker .icon-button {
             width: 45px;
             margin-left: 50px
+        }
+        
+        .note-details button {
+            width: 150px;
         }
         
         .note-details button:hover {
@@ -75,13 +83,17 @@
             cursor: pointer;
         }
         
+        .details-footer {}
+        
         @media(max-width:800px) {
             .note {
-                margin-top: 40px;
+                margin-top: 0px;
+                border: none;
             }
-            .details-footer .details-footer button {
-                width: 30px;
-                margin-top: 15px;
+            .details-footer button {
+                /* width: 30px; */
+                margin-top: 10px;
+                margin-bottom: 5px;
             }
         }
         /* type: text */
@@ -108,9 +120,9 @@
         /* type: image */
         
         .note-image-container {
-            height: 500px;
             display: flex;
             flex-direction: column;
+            height: 570px;
         }
         
         .note-image-container .save-button {
@@ -126,10 +138,10 @@
         }
         
         .note-image {
-            max-height: 250px;
-            max-width: 350px;
+            max-height: 300px;
+            /* max-width: 400px; */
             object-fit: cover;
-            margin: auto;
+            margin: 20px;
         }
         
         .note-image .color-picker {
@@ -141,6 +153,9 @@
             .note-image-container form input:last-child {
                 margin-bottom: 5px
             }
+            .note-image-container form {
+                margin-top: 5px
+            }
         }
         /* video */
         
@@ -148,10 +163,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-evenly;
+            height: 700px;
         }
         
         .note-video * {
             margin-bottom: 30px
+        }
+        
+        iframe {
+            margin-bottom: 5px;
+            height: 700px;
         }
         
         .note-video .color-picker {
@@ -163,6 +185,10 @@
             width: 45px;
             margin-left: 60px;
             height: 37px
+        }
+        
+        .note-video form {
+            height: 30%;
         }
         
         @media(max-width:800px) {
