@@ -30,7 +30,7 @@ function addNote(noteToAdd) {
                 type: "NoteTxt",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: noteToAdd.info.title,
@@ -46,7 +46,7 @@ function addNote(noteToAdd) {
                 type: "NoteImg",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: noteToAdd.info.title,
@@ -65,7 +65,7 @@ function addNote(noteToAdd) {
                 type: "NoteTodos",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: noteToAdd.info.title,
@@ -82,7 +82,7 @@ function addNote(noteToAdd) {
                 type: "NoteVideo",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: noteToAdd.info.title,
@@ -113,8 +113,8 @@ function editNote(noteToChange) {
 function pinNote(noteId) {
     const noteToChange = gNotes.find(note => note.id === noteId);
     noteToChange.pin.isPinned = !noteToChange.pin.isPinned
-    if (noteToChange.pin.isPinned) noteToChange.pin.pinImage = '/js/apps/keep/img/unpin.png'
-    else noteToChange.pin.pinImage = "/js/apps/keep/img/pin.png"
+    if (noteToChange.pin.isPinned) noteToChange.pin.pinImage = 'js/apps/keep/img/unpin.png'
+    else noteToChange.pin.pinImage = "js/apps/keep/img/pin.png"
     return storageService.put(NOTES_KEY, noteToChange)
         .then(note => {
             return query()
@@ -160,7 +160,7 @@ function addEmptyNote(type) {
                 type: "NoteTxt",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: 'note',
@@ -177,10 +177,10 @@ function addEmptyNote(type) {
                 type: "NoteImg",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
-                    url: "/js/apps/keep/img/default.png.png",
+                    url: "js/apps/keep/img/default.png.png",
                     title: "Me playing Mi"
                 },
                 style: { backgroundColor: '#999999' },
@@ -193,7 +193,7 @@ function addEmptyNote(type) {
                 type: "NoteTodos",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: "How was it:",
@@ -213,7 +213,7 @@ function addEmptyNote(type) {
                 type: "NoteVideo",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     url: "defaultvideourl",
@@ -238,7 +238,7 @@ function _createNotes() {
                 type: "NoteTxt",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: 'note',
@@ -251,10 +251,10 @@ function _createNotes() {
                 type: "NoteImg",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
-                    url: "/js/apps/keep/img/default.png.png",
+                    url: "js/apps/keep/img/default.png.png",
                     title: "Me playing Mi"
                 },
                 style: {
@@ -268,7 +268,7 @@ function _createNotes() {
                 type: "NoteTodos",
                 pin: {
                     isPinned: false,
-                    pinImage: "/js/apps/keep/img/pin.png"
+                    pinImage: "js/apps/keep/img/pin.png"
                 },
                 info: {
                     title: "How was it:",

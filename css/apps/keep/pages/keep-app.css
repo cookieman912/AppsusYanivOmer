@@ -1,7 +1,7 @@
 @import '../cmps/note-preview.css';
+@import '/css/apps/keep/cmps/note-list.css';
 @import '/css/apps/keep/pages/note-details.css';
 @import '/css/apps/keep/cmps/note-toolbox.css';
-@import '/css/apps/keep/cmps/note-list.css';
 @font-face {
     font-family: roboto;
     src: url(/fonts/Roboto.ttf);
