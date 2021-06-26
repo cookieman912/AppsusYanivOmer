@@ -14,8 +14,9 @@ export default {
     `,
     methods: {
         submitEmail(ev) {
-            const subject = ev.path[0][0].value;
+            let subject = ev.path[0][0].value;
             const body = ev.path[0][1].value;
+            if (subject === '') subject = ':No subject'
             emailService.sendEmail(subject, body);
             this.$router.push('/mail/main');
             const msg = {

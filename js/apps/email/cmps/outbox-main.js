@@ -9,7 +9,7 @@ export default {
             <email-filter @filtered="setFilter" />
             <outbox-list :emails="mailsToShow" /> 
         </div>
-        <h2 v-else> No E-mails in your outbux</h2>
+        <h2 v-else> No E-mails in your outbox</h2>
     `,
     data() {
         return {
