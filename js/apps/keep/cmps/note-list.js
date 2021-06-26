@@ -10,7 +10,7 @@ export default {
 
     <div class="button">
     <button @click= "$emit('delete', note.id)"> X </button>
-    <button @click= "$emit('pin', note.id)"> {{note.isPinned}} </button>
+    <button @click= "$emit('pin', note.id)">  <img class="" v-bind:src="note.pin.pinImage" alt="pin/unpin"> </button>
     
 </div>
    
@@ -21,36 +21,15 @@ export default {
 
     data() {
         return {
-            pinnedNotes: null,
-            unPinnedNotes: null,
 
         }
 
     },
 
 
+    computed: {
 
 
-    methods: {
-        getPinnedNotes() {
-            return notes.filter(note => note.isPinned)
-        },
-
-
-        getUnPinnedNotes() {
-            setTimeout(() => {
-                console.log(this.notes)
-                return this.notes.filter(note => !note.isPinned)
-            }, 500);
-
-        },
-
-        isNull() {
-            setTimeout(() => {
-                return this.note === null
-            }, 1000);
-
-        }
     },
 
 

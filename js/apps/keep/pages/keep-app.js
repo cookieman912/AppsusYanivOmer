@@ -1,4 +1,5 @@
 import { noteService } from "../services/note-service.js"
+import { eventBus } from "../../../services/event-bus-serivce.js"
 import keepToolbox from "../cmps/keep-toolbox.js"
 import noteList from "../cmps/note-list.js"
 
@@ -21,25 +22,19 @@ export default {
         }
     },
 
-    computed: {
-
-    },
-
 
     created() {
         noteService.query()
             .then(notes => {
                 this.notes = notes
                 this.filteredNotes = this.notes
-                this.pinnedNotes = this.getPinnedNotes()
-                this.unPinnedNotes = this.getUnpinnedNotes()
+                this.filterBy('')
             })
     },
 
     methods: {
         addNote(noteToAdd) {
             noteService.addNote(noteToAdd)
-            noteService.query()
                 .then(
                     notes => {
                         this.notes = notes;
@@ -50,38 +45,44 @@ export default {
 
         deleteNote(id) {
             noteService.deleteNote(id)
-            noteService.query()
                 .then(notes => {
                     this.notes = notes;
                     this.filterBy(this.filter)
+                    const msg = { txt: 'Note deleted' }
+                    eventBus.$emit('show-msg', msg);
                 })
         },
 
         pinNote(id) {
+
             noteService.pinNote(id)
-            noteService.query()
                 .then(notes => {
                     this.notes = notes;
                     this.filterBy(this.filter)
+
                 })
+            const msg = { txt: 'Note pinned' }
+            eventBus.$emit('show-msg', msg);
+
         },
 
         filterBy(filter) {
-            this.filteredNotes = (this.notes.filter(note => note.info.title.toLowerCase().includes(filter.text.toLowerCase())))
-            console.log(this.filteredNotes)
+            if (filter)
+                this.filteredNotes = (this.notes.filter(note => note.info.title.toLowerCase().includes(filter.text.toLowerCase())))
+
             this.pinnedNotes = this.getPinnedNotes()
             this.unPinnedNotes = this.getUnpinnedNotes()
             this.filteredNotes = this.pinnedNotes.concat(this.unPinnedNotes)
-            console.log(this.filteredNotes)
+
         },
 
         getPinnedNotes() {
-            console.log(this.filteredNotes.filter(note => note.isPinned))
-            return this.filteredNotes.filter(note => note.isPinned)
+
+            return this.filteredNotes.filter(note => note.pin.isPinned)
         },
         getUnpinnedNotes() {
-            console.log(this.filteredNotes.filter(note => !note.isPinned))
-            return this.filteredNotes.filter(note => !note.isPinned)
+
+            return this.filteredNotes.filter(note => !note.pin.isPinned)
         },
 
 
