@@ -11,7 +11,7 @@ export default {
              <div class="card">
                  <h3>Keep</h3>
                  <p>Never forget anything with our great keep service. save notes, pics, videos and lists so you'll always know what's going on.</p>
-                <router-link :to="'/keep'"><img src="/img/keep.jpg"></router-link>
+                <router-link :to="'/keep'"><img src="img/keep.jpg"></router-link>
              </div>
          </div>  
             </div>           
