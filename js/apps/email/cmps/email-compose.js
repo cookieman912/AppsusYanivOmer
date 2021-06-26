@@ -22,6 +22,7 @@ export default {
                 txt: 'E-mail Sent successfully'
             }
             eventBus.$emit('show-msg', msg);
+            eventBus.$emit('renderEmails');
         }
     }
 };

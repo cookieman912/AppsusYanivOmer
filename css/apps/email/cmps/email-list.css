@@ -6,7 +6,6 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    flex-grow: 100%;
 }
 
 .email-preview {
@@ -15,14 +14,11 @@
     padding-inline-end: 1rem;
     display: flex;
     gap: 1rem;
+    position: relative;
 }
 
 .email-list > :not(:last-child) {
     border-bottom: 1px solid black;
-}
-
-.email-preview span {
-    font-weight: bold;
 }
 
 .prev-subject {
@@ -88,6 +84,16 @@
     .email-preview {
         flex-direction: row;
         align-self: stretch;
+    }
+
+    .email-preview button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .email-preview:first-child {
+        border-top: 1px solid black;
     }
 
 

@@ -7,9 +7,6 @@ export default {
             <email-preview v-for="email in emails" :key="email.id" :email="email" />
         </ul>
     `,
-    created() {
-    },
-
     components: {
         emailPreview
     }

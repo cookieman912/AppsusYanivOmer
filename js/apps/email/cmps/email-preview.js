@@ -19,8 +19,8 @@ export default {
              </li>
     `,
     created() {
+        eventBus.$emit('renderEmails');
     },
-
     methods: {
         deleteMail() {
             const msg = {

@@ -46,3 +46,14 @@
     box-shadow: 0px -3px 0px 0px rgba(240, 125, 31, 0.719) inset;
     color: rgba(240, 55, 31, 0.719);
 }
+
+@media (max-width: 750px) {
+    .app-header h1 {
+        padding-inline-start: 0.3rem;
+    }
+
+    .page-nav {
+        padding-inline-end: 0.3rem;
+    }
+
+}

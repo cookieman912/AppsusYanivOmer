@@ -5,6 +5,7 @@ import noteDetails from "../apps/keep/pages/note-details.js";
 import emailDetails from "../apps/email/pages/email-details.js";
 import emailCompose from "../apps/email/cmps/email-compose.js";
 import emailMain from "../apps/email/cmps/email-main.js";
+import outboxMain from "../apps/email/cmps/outbox-main.js";
 
 
 
@@ -21,6 +22,10 @@ const routes = [{
         {
             path: 'main',
             component: emailMain
+        },
+        {
+            path:'outbox',
+            component: outboxMain
         },
         {
             path: 'compose',

@@ -130,9 +130,11 @@ export const emailService = {
     query,
     getById,
     removeEmail,
+    removeOutboxEmail,
     toggleRead,
     sendEmail,
-    getOutbox
+    queryOutbox,
+
 };
 
 function query() {
@@ -140,12 +142,12 @@ function query() {
         .then((emails) => {
             if (!emails || !emails.length) {
                 return storageService.postMany(EMAIL_KEY, gEmails);
-            }
+            }   
             return emails;
         });
 };
 
-function getOutbox() {
+function queryOutbox() {
     return storageService.query(SENT_KEY)
         .then((emails) => {
             if (!emails || !emails.length) return
@@ -160,9 +162,12 @@ function getById(id) {
 };
 
 function removeEmail(id) {
-    storageService.remove(SENT_KEY, id)
     return storageService.remove(EMAIL_KEY, id)
 };
+
+function removeOutboxEmail(id) {
+    return storageService.remove(SENT_KEY, id)
+}
 
 function toggleRead(id) {
     return storageService.toggleMailRead(EMAIL_KEY, id)
@@ -179,9 +184,20 @@ function sendEmail(subject, body) {
         isSent: true
 
     }
+    const newSentEmail = {
+        subject,
+        body,
+        isread: false,
+        sentAt: _getDate(),
+        from: 'omerandyaniv@coding.academy',
+        to: 'rotemcarmon@yaron.biton',
+        isSent: true
+
+    }
     newEmail.userName = newEmail.from.substr(0, newEmail.from.indexOf('@'));
+    newSentEmail.userName = newEmail.from.substr(0, newEmail.from.indexOf('@'));
     storageService.post(EMAIL_KEY, newEmail);
-    storageService.post(SENT_KEY, newEmail);
+    storageService.post(SENT_KEY, newSentEmail);
 
 };
 

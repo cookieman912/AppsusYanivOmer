@@ -12,7 +12,7 @@ export default {
                 <aside class="nav-bar">
                     <router-link :to="'/mail/compose'">Compose</router-link>
                     <router-link :to="'/mail/main'">Inbox<email-status :emails="emails" /></router-link>
-                    <router-link :to="'/mail/main'">Sent</router-link>
+                    <router-link :to="'/mail/outbox'">Sent</router-link>
                 </aside>
                 <router-view></router-view>
             </div>
@@ -29,12 +29,26 @@ export default {
                 this.emails = emails;
             })
         eventBus.$on('markAsRead', this.markEmail)
+        eventBus.$on('renderEmails', this.renderEmails)
+        eventBus.$on('deleteMail', this.deleteMail)
     },
     methods: {
         markEmail(email) {
             emailService.toggleRead(email.id)
-            .then((emails) => {
+                .then((emails) => {
                     this.emails = emails
+                })
+        },
+        deleteMail(email) {
+            emailService.removeEmail(email.id)
+                .then((emails) => {
+                    this.emails = emails
+                })
+        },
+        renderEmails() {
+            emailService.query()
+                .then((emails) => {
+                    this.emails = emails;
                 })
         }
     },

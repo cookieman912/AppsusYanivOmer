@@ -1,5 +1,11 @@
+@font-face {
+    font-family: alegreya;
+    src: url(/fonts/Alegreya.ttf);
+}
+
 .app-footer {
     position: absolute;
+    font-family: alegreya, sans-serif;
     bottom: 0;
     width: 100%;
     display: flex;
@@ -8,4 +14,14 @@
     border-top: 0.5px solid #2334cc;
     height: 5rem;
     background-color: #4f5372c9;
+    color: #E9EAEC;
+}
+
+@media (max-width: 750px) {
+    .app-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-inline-start: 2rem;
+    }
 }

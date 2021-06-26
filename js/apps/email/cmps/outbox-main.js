@@ -1,15 +1,15 @@
+import emailFilter from "./email-filter.js";
+import outboxList from "./outbox-list.js";
 import { emailService } from "../services/email-service.js"
 import { eventBus } from "../../../services/event-bus-serivce.js";
-import emailList from "./email-list.js";
-import emailStatus from "./email-status.js";
-import emailFilter from "./email-filter.js";
 
 export default {
     template: `
-    <div class="main-list">
-        <email-filter @filtered="setFilter" />
-        <email-list :emails="mailsToShow" />         
-    </div>
+        <div v-if="emails" class="main-list">
+            <email-filter @filtered="setFilter" />
+            <outbox-list :emails="mailsToShow" /> 
+        </div>
+        <h2 v-else> No E-mails in your outbux</h2>
     `,
     data() {
         return {
@@ -18,29 +18,22 @@ export default {
         }
     },
     created() {
-        emailService.query()
+        emailService.queryOutbox()
             .then((emails) => {
                 this.emails = emails;
             })
-        eventBus.$on('deleteMail', this.deleteMail)
-        eventBus.$on('markAsRead', this.markEmail)
+        eventBus.$on('deleteOutboxMail', this.deleteMail)
     },
     methods: {
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },
         deleteMail(email) {
-            emailService.removeEmail(email.id)
+            emailService.removeOutboxEmail(email.id)
                 .then((emails) => {
                     this.emails = emails
                 })
         },
-        markEmail(email) {
-            emailService.toggleRead(email.id)
-                .then((emails) => {
-                    this.emails = emails
-                })
-        }
     },
     computed: {
         mailsToShow() {
@@ -52,11 +45,8 @@ export default {
             return emailsToShow;
         }
     },
-
-
     components: {
-        emailList,
-        emailStatus,
-        emailFilter
+        emailFilter,
+        outboxList
     }
 }
