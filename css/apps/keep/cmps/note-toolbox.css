@@ -57,7 +57,7 @@
 }
 
 .note-input:first-child {
-    width: 35%;
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -68,14 +68,15 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .note-input:last-child label {
-    width: 50%;
+    max-width: 50%;
 }
 
 .note-input label {
-    width: 300px;
+    /* width: 300px; */
 }
 
 

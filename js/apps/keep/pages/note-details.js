@@ -35,13 +35,15 @@ export default {
  
    </div>
 
+   <!-- <router-link to="/keep">  -->
    <button class="save-button">save</button> 
+<!-- </router-link>  -->
  </form > 
 
 
 </div>
 
-<div v-else-if="isImage" v-bind:style="note.style" class='note note-image-container'> 
+<div  v-else-if="isImage" v-bind:style="note.style" class='note note-image-container'> 
 
 <router-link to="/keep"> <button>exit</button> </router-link>
 
@@ -129,7 +131,7 @@ export default {
 
 <router-link to="/keep"> <button>exit</button> </router-link>
 
-   <iframe   width="420" height="315" v-bind:src="videoUrl">
+   <iframe   width="80%" height="315" v-bind:src="videoUrl">
    </iframe>
 
    <form @submit.prevent="editNote">   
@@ -252,9 +254,11 @@ export default {
                         this.note = note)
                     .then(note => {
                         this.nextNoteId = noteService.getNextId(note)
+                            .then(nextId => this.nextNoteId = nextId)
                     })
                     .then(note => {
                         this.prevNoteId = noteService.getPrevId(this.note)
+                            .then(prevId => this.prevNoteId = prevId)
 
                     })
             }

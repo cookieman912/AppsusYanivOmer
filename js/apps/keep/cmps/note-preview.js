@@ -1,7 +1,7 @@
 export default {
     props: ['note'],
     template: ` <span class="note.title"> 
-       <router-link :to="'/keep/details/'+note.id">{{noteByType}}</router-link>
+       <router-link :to="'/keep/details/'+note.id">{{note.info.title}} - {{noteByType}} note </router-link>
 
 </span>`,
 
@@ -9,16 +9,15 @@ export default {
         noteByType() {
             switch (this.note.type) {
                 case 'NoteTxt':
-                    return this.note.info.title
+                    return 'text'
                 case 'NoteImg':
-                    return this.note.info.title
+                    return 'image'
 
                 case 'NoteVideo':
-                    return this.note.info.title
+                    return 'video'
 
                 case 'NoteTodos':
-                    console.log(this.note)
-                    return this.note.info.title
+                    return 'todos'
 
             }
         }
