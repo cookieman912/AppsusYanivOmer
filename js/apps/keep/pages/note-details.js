@@ -35,9 +35,11 @@ export default {
  
    </div>
 
-   <!-- <router-link to="/keep">  -->
+  
+
    <button class="save-button">save</button> 
-<!-- </router-link>  -->
+
+ 
  </form > 
 
 
@@ -223,6 +225,8 @@ export default {
             noteService.editNote(this.note)
             const msg = { txt: 'Note saved!' }
             eventBus.$emit('show-msg', msg);
+            this.$router.push('/keep');
+
         },
 
 

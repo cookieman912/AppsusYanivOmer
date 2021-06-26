@@ -22,6 +22,10 @@
             font-size: 2em
         }
         
+        .note button:first-child {
+            margin-top: 5px;
+        }
+        
         .note-details button {
             background-color: #fad12cde;
             border: none;
@@ -36,6 +40,10 @@
         .color-picker .icon-button {
             width: 45px;
             margin-left: 50px
+        }
+        
+        .note-details button {
+            width: 150px;
         }
         
         .note-details button:hover {
@@ -79,10 +87,11 @@
         
         @media(max-width:800px) {
             .note {
-                margin-top: 40px;
+                margin-top: 0px;
+                border: none;
             }
             .details-footer button {
-                width: 30px;
+                /* width: 30px; */
                 margin-top: 10px;
                 margin-bottom: 5px;
             }
@@ -113,7 +122,7 @@
         .note-image-container {
             display: flex;
             flex-direction: column;
-            height: 680px;
+            height: 570px;
         }
         
         .note-image-container .save-button {
@@ -132,7 +141,7 @@
             max-height: 300px;
             /* max-width: 400px; */
             object-fit: cover;
-            margin: auto;
+            margin: 20px;
         }
         
         .note-image .color-picker {
@@ -144,6 +153,9 @@
             .note-image-container form input:last-child {
                 margin-bottom: 5px
             }
+            .note-image-container form {
+                margin-top: 5px
+            }
         }
         /* video */
         
@@ -153,7 +165,6 @@
             align-items: center;
             justify-content: space-evenly;
             height: 700px;
-            margin-top: 60px
         }
         
         .note-video * {
