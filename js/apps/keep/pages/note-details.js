@@ -1,5 +1,6 @@
 import { noteService } from "../services/note-service.js"
 import { utilService } from "../../../services/util-service.js"
+import { eventBus } from "../../../services/event-bus-serivce.js"
 
 export default {
 
@@ -85,7 +86,7 @@ export default {
   <input class="title" v-model="note.info.title" type="Text" id="title">
 
 
-    <button @click="addTodo"> add </button>
+    <button @click.prevent="addTodo"> add </button>
 </div>
   <ul>
     
@@ -93,11 +94,11 @@ export default {
 
     <input  v-model="todo.txt" type="Text" id="todo">
 
-    <button class="isDone" v-if="todo.isDone"  @click="toggleDone(todo.id)">X</button>
+    <button class="isDone" v-if="todo.isDone"  @click.prevent="toggleDone(todo.id)">✓</button>
 
-    <button v-else  @click="toggleDone(todo.id)">V</button>
+    <button v-else  @click.prevent="toggleDone(todo.id)"></button>
 
-    <button type="button" @click="deleteTodo(todo.id)">delete</button> 
+    <button type="button" @click="deleteTodo(todo.id)">X</button> 
 
     </li>
 
@@ -218,7 +219,8 @@ export default {
     methods: {
         editNote() {
             noteService.editNote(this.note)
-            noteService.query()
+            const msg = { txt: 'Note saved!' }
+            eventBus.$emit('show-msg', msg);
         },
 
 

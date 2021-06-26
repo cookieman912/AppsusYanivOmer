@@ -21,6 +21,15 @@
     width: 60px;
     margin-left: 7px;
     margin-right: 7px;
+    height: 26px;
+}
+
+.note-list button img {
+    height: 26px;
+}
+
+.button {
+    display: flex;
 }
 
 .note-preview button:hover {

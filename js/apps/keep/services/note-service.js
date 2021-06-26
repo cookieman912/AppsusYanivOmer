@@ -22,90 +22,108 @@ function query() {
 
 function addNote(noteToAdd) {
 
+    let newNote;
     switch (noteToAdd.type) {
         case 'NoteTxt':
-            console.log('added text')
-            gNotes.push({
+            newNote = {
                 id: utilService.makeId(),
                 type: "NoteTxt",
-                isPinned: false,
+                pin: {
+                    isPinned: false,
+                    pinImage: "/js/apps/keep/img/pin.png"
+                },
                 info: {
                     title: noteToAdd.info.title,
                     txt: noteToAdd.info.content,
                 },
                 style: { backgroundColor: '#999999' },
-            });
+            };
             break;
 
         case 'NoteImg':
-            gNotes.push({
+            newNote = {
                 id: utilService.makeId(),
                 type: "NoteImg",
-                isPinned: false,
+                pin: {
+                    isPinned: false,
+                    pinImage: "/js/apps/keep/img/pin.png"
+                },
                 info: {
                     title: noteToAdd.info.title,
                     url: noteToAdd.info.content,
                 },
                 style: { backgroundColor: '#999999' },
-            })
+            };
             break;
 
         case 'NoteTodos':
             const toDolist = noteToAdd.info.content.split(',').map(todo => {
                 return { txt: todo, isDone: false, id: utilService.makeId(), }
             })
-            gNotes.push({
+            newNote = {
                 id: utilService.makeId(),
                 type: "NoteTodos",
-                isPinned: false,
+                pin: {
+                    isPinned: false,
+                    pinImage: "/js/apps/keep/img/pin.png"
+                },
                 info: {
                     title: noteToAdd.info.title,
                     todos: toDolist,
                 },
                 style: { backgroundColor: '#999999' },
 
-            })
-            console.log(gNotes[gNotes.length - 1])
+            };
             break;
 
         case 'NoteVideo':
-            gNotes.push({
+            newNote = {
                 id: utilService.makeId(),
                 type: "NoteVideo",
-                isPinned: false,
+                pin: {
+                    isPinned: false,
+                    pinImage: "/js/apps/keep/img/pin.png"
+                },
                 info: {
                     title: noteToAdd.info.title,
                     url: noteToAdd.info.content,
                 },
                 style: { backgroundColor: '#999999' },
-            })
+            };
 
 
             break;
     }
-    utilService.saveToStorage(NOTES_KEY, gNotes)
+    return storageService.post(NOTES_KEY, newNote)
+        .then(note => {
+            gNotes.push(note)
+            return query()
+        })
+
 
 
 }
 
 function editNote(noteToChange) {
     const idxToChange = gNotes.findIndex(note => note.id === noteToChange.id)
-    console.log(noteToChange)
-    gNotes[idxToChange] = noteToChange;
-    utilService.saveToStorage(NOTES_KEY, gNotes)
+    return storageService.put(NOTES_KEY, noteToChange)
 
 }
 
 function pinNote(noteId) {
-    const idx = gNotes.findIndex(note => note.id === noteId);
-    gNotes[idx].isPinned = !gNotes[idx].isPinned
-    utilService.saveToStorage(NOTES_KEY, gNotes)
+    const noteToChange = gNotes.find(note => note.id === noteId);
+    noteToChange.pin.isPinned = !noteToChange.pin.isPinned
+    if (noteToChange.pin.isPinned) noteToChange.pin.pinImage = '/js/apps/keep/img/unpin.png'
+    else noteToChange.pin.pinImage = "/js/apps/keep/img/pin.png"
+    return storageService.put(NOTES_KEY, noteToChange)
+        .then(note => {
+            return query()
+        })
+
 }
 
 function deleteNote(noteId) {
-    const idx = gNotes.findIndex(note => note.id === noteId);
-    gNotes.splice(idx, 1);
-    utilService.saveToStorage(NOTES_KEY, gNotes);
+    return storageService.remove(NOTES_KEY, noteId)
 }
 
 function save(book) {
@@ -140,7 +158,10 @@ function addEmptyNote(type) {
             gNotes.push({
                 id: utilService.makeId(),
                 type: "NoteTxt",
-                isPinned: false,
+                pin: {
+                    isPinned: false,
+                    pinImage: "/js/apps/keep/img/pin.png"
+                },
                 info: {
                     title: 'note',
                     txt: "default",
@@ -154,7 +175,10 @@ function addEmptyNote(type) {
             gNotes.push({
                 id: utilService.makeId(),
                 type: "NoteImg",
-                isPinned: false,
+                pin: {
+                    isPinned: false,
+                    pinImage: "/js/apps/keep/img/pin.png"
+                },
                 info: {
                     url: "/js/apps/keep/img/default.png.png",
                     title: "Me playing Mi"
@@ -167,7 +191,10 @@ function addEmptyNote(type) {
             gNotes.push({
                 id: utilService.makeId(),
                 type: "NoteTodos",
-                isPinned: false,
+                pin: {
+                    isPinned: false,
+                    pinImage: "/js/apps/keep/img/pin.png"
+                },
                 info: {
                     title: "How was it:",
                     todos: [
@@ -184,7 +211,10 @@ function addEmptyNote(type) {
             gNotes.push({
                 id: utilService.makeId(),
                 type: "NoteVideo",
-                isPinned: false,
+                pin: {
+                    isPinned: false,
+                    pinImage: "/js/apps/keep/img/pin.png"
+                },
                 info: {
                     url: "defaultvideourl",
                     title: "Me playing Mi"
@@ -203,11 +233,13 @@ function _createNotes() {
 
 
     if (!notes || !notes.length) {
-        console.log('resolving to default notes');
         notes = [{
                 id: utilService.makeId(),
                 type: "NoteTxt",
-                isPinned: true,
+                pin: {
+                    isPinned: false,
+                    pinImage: "/js/apps/keep/img/pin.png"
+                },
                 info: {
                     title: 'note',
                     txt: "Fullstack Me Baby!"
@@ -217,7 +249,10 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "NoteImg",
-                isPinned: false,
+                pin: {
+                    isPinned: false,
+                    pinImage: "/js/apps/keep/img/pin.png"
+                },
                 info: {
                     url: "/js/apps/keep/img/default.png.png",
                     title: "Me playing Mi"
@@ -231,7 +266,10 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "NoteTodos",
-                isPinned: false,
+                pin: {
+                    isPinned: false,
+                    pinImage: "/js/apps/keep/img/pin.png"
+                },
                 info: {
                     title: "How was it:",
                     todos: [

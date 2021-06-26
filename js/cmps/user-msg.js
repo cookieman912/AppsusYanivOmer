@@ -12,14 +12,17 @@ export default {
         };
     },
     created() {
+
         eventBus.$on('show-msg', this.showMsg);
     },
-    destroyed(){
+    destroyed() {
         eventBus.$off('show-msg', this.showMsg);
     },
     methods: {
         showMsg(msg) {
+            console.log('in message', msg)
             this.msg = msg;
+            console.log(this.msg)
             setTimeout(() => {
                 this.msg = null;
             }, 1500);

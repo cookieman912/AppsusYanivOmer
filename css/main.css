@@ -3,13 +3,10 @@
 @import './pages/app-header.css';
 @import './cmps/user-msg.css';
 @import './pages/app-footer.css';
-
 @font-face {
     font-family: roboto;
     src: url(/fonts/Roboto.ttf);
 }
-
-
 
 * {
     box-sizing: border-box;
